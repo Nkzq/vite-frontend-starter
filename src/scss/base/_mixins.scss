@@ -51,7 +51,7 @@
   }
 
   @if map.has-key($name, size, min) and map.has-key($name, size, max) {
-    @include rfs(map.get($name, size, min), map.get($name, size, max));
+    @include poly-fluid-sizing('font-size', ($pfs-min: 18px, $pfs-max: 20px));
   }
 
   font-size: if(map.has-key($name, size, default), map.get($name, size, default), $base-font-size);
@@ -218,17 +218,6 @@
   }
 }
 
-// Default container settings
-// Usage:
-// @include container;
-@mixin container {
-  width: $container-width;
-  max-width: calc(100% - #{$mobile-external-gutter * 2});
-  padding: 0;
-  margin-right: auto;
-  margin-left: auto;
-}
-
 // Hide element scrollbar
 // Usage:
 // @include hideScrollBar;
@@ -268,19 +257,4 @@
 @mixin square($size) {
   width: $size;
   height: $size;
-}
-
-// Responsive font size
-// Usage:
-// @include rfs(rem(12px), rem(20px));
-@mixin rfs($min-font-size: 12px, $max-font-size: 21px, $lower-range: $rfs-lower-range, $upper-range: $rfs-upper-range) {
-
-  font-size: calc(#{$min-font-size} + #{(($max-font-size / ($max-font-size * 0 + 1)) - ($min-font-size / ($min-font-size * 0 + 1)))} * ( (100vw - #{$lower-range}) / #{(($upper-range / ($upper-range * 0 + 1)) - ($lower-range / ($lower-range * 0 + 1)))}));
-
-  @media screen and (max-width: $lower-range) {
-    font-size: $min-font-size;
-  }
-  @media screen and (min-width: $upper-range){
-    font-size: $max-font-size;
-  }
 }

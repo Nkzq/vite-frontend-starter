@@ -1,13 +1,112 @@
-.container {
-  @include container;
+@use 'sass:map';
+@use 'sass:math';
+
+.wrapper {
+  max-width: $grid-container-width;
 }
 
-@include mq(md) {
-  .container {
-    padding: 0;
+.container {
+  margin-right: auto;
+  margin-left: auto;
+
+  @each $name, $bp in $breakpoints {
+    @include mq($name) {
+      padding-right: map.get($grid-outer-gutters, $name);
+      padding-left: map.get($grid-outer-gutters, $name);
+    }
+  }
+
+  &--no-gutter {
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  &--relative {
+    position: relative;
   }
 }
 
-h1 {
-  @include fs(title);
+.row {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  @each $name, $bp in $breakpoints {
+    @include mq($name) {
+      $gutter-compensation: map.get($grid-inner-gutters, $name) * 0.5 * -1;
+      margin-right: $gutter-compensation;
+      margin-left: $gutter-compensation;
+    }
+  }
+
+  &--reverse {
+    flex-direction: row-reverse;
+  }
+
+  &--full {
+    @include fullWidth;
+
+    @each $name, $bp in $breakpoints {
+      @include mq($name) {
+        $gutter: map.get($grid-outer-gutters, $name);
+        $width-compensation: $gutter * 2;
+        width: calc(100vw - #{$width-compensation});
+        margin-right: calc(-50vw + #{$gutter});
+        margin-left: calc(-50vw + #{$gutter});
+      }
+    }
+  }
+}
+
+%col {
+  @each $name, $bp in $breakpoints {
+    @include mq($name) {
+      $half-gutter-width: map.get($grid-inner-gutters, $name) * 0.5;
+      padding-right: $half-gutter-width;
+      padding-left: $half-gutter-width;
+    }
+  }
+}
+
+@for $i from 0 through $grid-columns {
+  .col-#{$i} {
+    @extend %col;
+    flex-basis: math.div(100%, $grid-columns * $i);
+    max-width: math.div(100%, $grid-columns * $i);
+  }
+
+  .col-offset-#{$i} {
+    @extend %col;
+    @if $i == 0 {
+      margin-left: 0;
+    } @else {
+      margin-left: math.div(100%, $grid-columns * $i);
+    }
+  }
+}
+
+@each $name, $bp in $breakpoints {
+  @for $i from 0 through $grid-columns {
+    .col-#{$name}-#{$i} {
+      @extend %col;
+
+      @include mq($name) {
+        flex-basis: math.div(100%, $grid-columns * $i);
+        max-width: math.div(100%, $grid-columns * $i);
+      }
+    }
+
+    .col-#{$name}-offset-#{$i} {
+      @extend %col;
+
+      @include mq($name) {
+        @if $i == 0 {
+          margin-left: 0;
+        } @else {
+          margin-left: math.div(100%, $grid-columns * $i);
+        }
+      }
+    }
+  }
 }

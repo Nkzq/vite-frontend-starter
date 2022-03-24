@@ -14,6 +14,28 @@ $breakpoints: (
   2xl: 1440px,
 );
 
+/* Fluid grid setup */
+$grid-inner-gutters: (
+  xs : 8px,
+  sm : 15px,
+  md : 20px,
+  lg : 20px,
+  xl : 20px,
+  2xl: 20px,
+);
+
+$grid-outer-gutters: (
+  xs : 23px,
+  sm : 30px,
+  md : 40px,
+  lg : 50px,
+  xl : 50px,
+  2xl: 50px,
+);
+
+$grid-columns: 12;
+$grid-container-width: #{rem(1024px)};
+
 /* Typography */
 $font-base: Roboto, sans-serif;
 $font-heading: Roboto, sans-serif;
@@ -26,7 +48,6 @@ $heading-line-height: 1.2;
 $font-styles: (
   title: (
     size: (
-      default: 35px,
       min: 35px,
       max: 70px,
     ),
@@ -35,15 +56,12 @@ $font-styles: (
   ),
   subtitle: (
     size: (
-      default: 16px,
       min: 16px,
       max: 22px,
     ),
-    ratio: 1.25,
   ),
   button: (
     size: (
-      default: 12px,
       min: 12px,
       max: 16px,
     ),
@@ -51,8 +69,8 @@ $font-styles: (
   )
 );
 
-$rfs-lower-range: map.get($breakpoints, 'xs');
-$rfs-upper-range: map.get($breakpoints, '2xl');
+$pfs-min: map.get($breakpoints, xs);
+$pfs-max: map.get($breakpoints, 2xl);
 
 /* Z-indexes */
 $z-indexes: (
@@ -60,12 +78,6 @@ $z-indexes: (
   main,
   footer
 );
-
-
-/* Paths */
-/* Grid setup */
-$container-width: 1040px;
-$mobile-external-gutter: 20px;
 
 /* Colour palette */
 /* Use setColor function */
