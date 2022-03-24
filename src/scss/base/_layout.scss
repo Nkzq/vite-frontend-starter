@@ -1,0 +1,13 @@
+.container {
+  @include container;
+}
+
+@include mq(md) {
+  .container {
+    padding: 0;
+  }
+}
+
+h1 {
+  @include fs(title);
+}

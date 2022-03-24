@@ -1,0 +1,27 @@
+@use "sass:map";
+
+@if $bp-helper {
+  body {
+    position: relative;
+
+    &::after {
+      content: 'xs < #{map.get($breakpoints, sm)}';
+      position: absolute;
+      right: rem(20px);
+      bottom: rem(20px);
+      z-index: z('helper');
+      padding: rem(4px) rem(10px);
+      background-color: setColor(main);
+      color: setColor(white);
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: rem(12px);
+
+      @each $bp, $px in $breakpoints {
+        @include mq($bp) {
+          content: "#{$bp} > #{$px}";
+        }
+      }
+    }
+  }
+}

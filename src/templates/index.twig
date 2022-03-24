@@ -1,0 +1,18 @@
+{% set siteTitle = 'Foo' %}
+
+{% extends './_base.twig' %}
+
+{% block main %}
+  <h1
+    data-module="Hello"
+    data-context="@media (min-width: 768px) and was @visible"
+  >
+    {{ data[lang].title }}
+  </h1>
+
+  <p>toto</p>
+
+  {% include 'utils/_icon.twig' with {
+    iconID: 'menu'
+  } %}
+{% endblock %}

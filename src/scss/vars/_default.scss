@@ -1,0 +1,88 @@
+@use "sass:map";
+
+/**
+ * Variables
+*/
+
+/* Breakpoints */
+$breakpoints: (
+  xs: 375px,
+  sm : 480px,
+  md : 768px,
+  lg : 1024px,
+  xl : 1280px,
+  2xl: 1440px,
+);
+
+/* Typography */
+$font-base: Roboto, sans-serif;
+$font-heading: Roboto, sans-serif;
+
+$base-font-size: 16px;
+
+$base-line-height: 1.4;
+$heading-line-height: 1.2;
+
+$font-styles: (
+  title: (
+    size: (
+      default: 35px,
+      min: 35px,
+      max: 70px,
+    ),
+    lh: $heading-line-height,
+    weight: 700,
+  ),
+  subtitle: (
+    size: (
+      default: 16px,
+      min: 16px,
+      max: 22px,
+    ),
+    ratio: 1.25,
+  ),
+  button: (
+    size: (
+      default: 12px,
+      min: 12px,
+      max: 16px,
+    ),
+    weight: 700
+  )
+);
+
+$rfs-lower-range: map.get($breakpoints, 'xs');
+$rfs-upper-range: map.get($breakpoints, '2xl');
+
+/* Z-indexes */
+$z-indexes: (
+  header,
+  main,
+  footer
+);
+
+
+/* Paths */
+/* Grid setup */
+$container-width: 1040px;
+$mobile-external-gutter: 20px;
+
+/* Colour palette */
+/* Use setColor function */
+$colors: (
+  black: (
+    base: #000
+  ),
+  white: (
+    base: #fff
+  ),
+  main: (
+    light: #63ccff,
+    base: #039be5,
+    dark: #006db3,
+  ),
+);
+
+
+/* Components */
+$loading-dimensions: 50px;
