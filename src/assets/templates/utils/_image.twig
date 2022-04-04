@@ -1,0 +1,15 @@
+{% set pictureClass = pictureClass ?? 'picture' %}
+<picture class="{{ pictureClass }}">
+  {% for break, image in breakpoints %}
+    {% if image.webp | default %}
+      <source media="(min-width: {{ break }}px)" data-srcset="{{ image.src }}.webp 1x, {{ image.src_2x ?? image.src }}.webp 2x" />
+    {% endif %}
+    <source media="(min-width: {{ break }}px)" data-srcset="{{ image.src }}.{{ image.ext }} 1x, {{ image.src_2x ?? image.src }}.{{ image.ext }} 2x" />
+  {% else %}
+    {% if image.webp | default %}
+      <source data-srcset="{{ image.src }}.webp 1x, {{ image.src_2x ?? image.src }}.webp 2x" />
+    {% endif %}
+    <source data-srcset="{{ image.src }}.{{ image.ext }} 1x, {{ image.src_2x ?? image.src }}.{{ image.ext }} 2x" />
+  {% endfor %}
+  <img alt="{{ image.alt ?? 'ici le ALT' }}" class="lazyload {{ class ?? (image.class ?? '') }}" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mM8IQkAAa8A48opxD0AAAAASUVORK5CYII=" data-srcset="{{ image.src }}.{{ image.ext }} 1x, {{ image.src_2x ?? image.src }}.{{ image.ext }} 2x" />
+</picture>
