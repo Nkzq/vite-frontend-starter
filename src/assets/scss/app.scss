@@ -5,4 +5,12 @@
 
 .section {
   color: blue;
+  height: 1200px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
 }

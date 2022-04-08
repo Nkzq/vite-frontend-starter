@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite --emptyOutDir build",
-    "prod": "node configuration/webp.js && vite --emptyOutDir build",
+    "prod": "node scripts/webp.js && vite --emptyOutDir build",
     "preview": "vite preview",
-    "webp": "node configuration/webp.js",
+    "webp": "node scripts/webp.js",
     "lint:sass": "sass-lint -v -q",
     "lint:js": "eslint --ext .js src/js/"
   },

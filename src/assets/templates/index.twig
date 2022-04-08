@@ -1,5 +1,3 @@
-{% set siteTitle = 'Foo' %}
-
 {% extends './_base.twig' %}
 
 {% block main %}
@@ -9,20 +7,4 @@
   >
     {{ data[lang].title }}
   </h1>
-
-  <p class="section">toto</p>
-
-  {% include 'utils/_image.twig' with {
-    pictureClass: 'picture',
-    image: {
-      src: "/assets/images/test1",
-      alt: "Alt image",
-      ext: "png",
-      webp: true,
-    }
-  } %}
-
-  {% include 'utils/_icon.twig' with {
-    iconID: 'menu'
-  } %}
 {% endblock %}

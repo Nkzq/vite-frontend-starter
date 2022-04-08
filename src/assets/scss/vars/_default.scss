@@ -4,6 +4,8 @@
  * Variables
 */
 
+$bp-helper: 'true';
+
 /* Breakpoints */
 $breakpoints: (
   xs: 375px,
@@ -75,8 +77,9 @@ $pfs-max: map.get($breakpoints, 2xl);
 /* Z-indexes */
 $z-indexes: (
   header,
+  footer,
   main,
-  footer
+  helper,
 );
 
 /* Colour palette */

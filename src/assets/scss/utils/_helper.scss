@@ -2,11 +2,9 @@
 
 @if $bp-helper {
   body {
-    position: relative;
-
     &::after {
-      content: 'xs < #{map.get($breakpoints, sm)}';
-      position: absolute;
+      content: '< #{map.get($breakpoints, xs)}';
+      position: fixed;
       right: rem(20px);
       bottom: rem(20px);
       z-index: z('helper');

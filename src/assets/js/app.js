@@ -56,6 +56,9 @@ conditioner.hydrate(document.documentElement)
  * LazySizes configuration
  * https://github.com/aFarkas/lazysizes/#js-api---options
  */
+
+const images = import.meta.globEager('../images/*')
+
 lazySizes.cfg.nativeLoading = {
   setLoadingAttribute: false,
 }
