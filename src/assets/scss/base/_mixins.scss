@@ -118,13 +118,13 @@
 @mixin aspect-ratio($x,$y, $pseudo: false) {
   $padding: unquote( ( $y / $x ) * 100 + '%' );
   @if $pseudo {
-      &:before {
-          @include pseudo($pos: relative);
-          width: 100%;
-          padding-top: $padding;
-      }
-  } @else {
+    &:before {
+      @include pseudo($pos: relative);
+      width: 100%;
       padding-top: $padding;
+    }
+  } @else {
+    padding-top: $padding;
   }
 }
 
@@ -138,28 +138,28 @@
   width: 0;
   height: 0;
   @if $round {
-      border-radius: 3px;
+    border-radius: 3px;
   }
   @if $direction == down {
-      border-left: $size solid transparent;
-      border-right: $size solid transparent;
-      border-top: $size solid $color;
-      margin-top: 0 - round( $size / 2.5 );
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-top: $size solid $color;
+    margin-top: 0 - round( $size / 2.5 );
   } @else if $direction == up {
-      border-left: $size solid transparent;
-      border-right: $size solid transparent;
-      border-bottom: $size solid $color;
-      margin-bottom: 0 - round( $size / 2.5 );
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+    margin-bottom: 0 - round( $size / 2.5 );
   } @else if $direction == right {
-      border-top: $size solid transparent;
-      border-bottom: $size solid transparent;
-      border-left: $size solid $color;
-      margin-right: -$size;
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+    margin-right: -$size;
   } @else if  $direction == left {
-      border-top: $size solid transparent;
-      border-bottom: $size solid transparent;
-      border-right: $size solid $color;
-      margin-left: -$size;
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+    margin-left: -$size;
   }
 }
 
@@ -174,7 +174,6 @@
 // Usage:
 // @include(Roboto, ../fonts/roboto-v29-latin-regular, 900);
 @mixin declare-font-face($font-family, $font-filename, $font-weight: 400, $font-style: normal, $font-stretch: normal) {
-
   @font-face {
       font-family: "#{$font-family}";
       font-style: $font-style;
@@ -199,9 +198,9 @@
   padding: 0 !important;
   margin: -1px !important;
   overflow: hidden !important;
-  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
-  clip-path: inset(50%) !important; /* 2 */
-  white-space: nowrap !important; /* 3 */
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  clip-path: inset(50%) !important;
+  white-space: nowrap !important;
   border: 0 !important;
 
   @if $focusable {
@@ -257,4 +256,14 @@
 @mixin square($size) {
   width: $size;
   height: $size;
+}
+
+// Set image (for example) as a cover
+// Usage:
+// @include cover;
+@mixin cover {
+  display: block;
+  width: 100%;
+  height: 100%;
+  @include object-fit(cover);
 }

@@ -9,29 +9,29 @@ $bp-helper: 'true';
 /* Breakpoints */
 $breakpoints: (
   xs: 375px,
-  sm : 480px,
-  md : 768px,
-  lg : 1024px,
-  xl : 1280px,
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
   2xl: 1440px,
 );
 
 /* Fluid grid setup */
 $grid-inner-gutters: (
-  xs : 8px,
-  sm : 15px,
-  md : 20px,
-  lg : 20px,
-  xl : 20px,
+  xs: 8px,
+  sm: 15px,
+  md: 20px,
+  lg: 20px,
+  xl: 20px,
   2xl: 20px,
 );
 
 $grid-outer-gutters: (
-  xs : 23px,
-  sm : 30px,
-  md : 40px,
-  lg : 50px,
-  xl : 50px,
+  xs: 23px,
+  sm: 30px,
+  md: 40px,
+  lg: 50px,
+  xl: 50px,
   2xl: 50px,
 );
 
@@ -42,7 +42,7 @@ $grid-container-width: #{rem(1024px)};
 $font-base: Roboto, sans-serif;
 $font-heading: Roboto, sans-serif;
 
-$base-font-size: 16px;
+$base-font-size: #{rem(16px)};
 
 $base-line-height: 1.4;
 $heading-line-height: 1.2;
@@ -56,12 +56,6 @@ $font-styles: (
     lh: $heading-line-height,
     weight: 700,
   ),
-  subtitle: (
-    size: (
-      min: 16px,
-      max: 22px,
-    ),
-  ),
   button: (
     size: (
       min: 12px,
@@ -71,6 +65,7 @@ $font-styles: (
   )
 );
 
+/* Fluid sizing min and max sizes */
 $pfs-min: map.get($breakpoints, xs);
 $pfs-max: map.get($breakpoints, 2xl);
 
@@ -97,7 +92,6 @@ $colors: (
     dark: #006db3,
   ),
 );
-
 
 /* Components */
 $loading-dimensions: 50px;

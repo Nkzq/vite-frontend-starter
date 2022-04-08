@@ -21,8 +21,9 @@
 /* Components */
 @import 'components/icons';
 
+/* Patterns */
 @import 'patterns/header';
 @import 'patterns/footer';
 
-/* Browser specific styles */
+/* Dirty hacks and overrides */
 @import 'dirty/hacks';
