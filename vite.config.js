@@ -16,8 +16,8 @@ const file = fileURLToPath(import.meta.url)
 const dir = dirname(file)
 const { rootDir, buildDir, server, imagemin } = config
 
-// i18n
-const fr = require(`./${rootDir}/i18n/fr.json`)
+// JSON data
+const fr = require(`./${rootDir}/data/fr.json`)
 
 export default defineConfig ({
   server: {
