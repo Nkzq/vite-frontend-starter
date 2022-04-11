@@ -1,8 +1,9 @@
 const config = {
-  baseURL: 'http://localhost:8000/',
+  baseURL: 'https://localhost:8000/',
   server: {
     host: 'localhost',
     port: 8000,
+    https: true,
   },
   rootDir: 'src',
   buildDir: 'dist',

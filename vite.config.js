@@ -17,12 +17,11 @@ const dir = dirname(file)
 const { rootDir, buildDir, server, imagemin } = config
 
 // JSON data
-const fr = require(`./${rootDir}/data/fr.json`)
+const en = require(`./${rootDir}/data/en.json`)
 
 export default defineConfig ({
   server: {
-    port: server.port,
-    host: server.host,
+    ...server,
   },
   root: path.join(dir, rootDir),
   build: {
@@ -35,7 +34,7 @@ export default defineConfig ({
     twig({
       globals: {
         data: {
-          fr,
+          en,
         }
       }
     }),
