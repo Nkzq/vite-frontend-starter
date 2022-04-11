@@ -261,10 +261,9 @@ Usage :
 
 You can declare your different font styles as a map
   * `name` - name of your font style
-  * `size` - mobile font sizes
-    * `min` - minimum size with fluid sizing
-    * `max` - maximum size with fluid sizing
-    * `default` - size with no fluid sizing
+  * `size` - font-size with no fuild sizing
+    * `min` - minimum font-size with fluid sizing
+    * `max` - maximum font-size with fluid sizing
   * `lh` - line-height
   * `weight` - font weight
   * `color` - color of the text
@@ -281,9 +280,7 @@ $font-styles: (
     color: setColor(main),
   ),
   subtitle: (
-    size: (
-      default: 14px,
-    )
+    size: 14px,
     lh: 1.5,
   ),
 );
@@ -353,26 +350,18 @@ You can set `$bp-helper` to `true` in order to enable a little UI helper display
 * ##### Grid
 
 Grid settings are located under `src/scss/vars/_default.scss`
-Gutter sizes are related to breakpoints.
+Gutter sizes are related to breakpoints, It uses fluid sizing to calculate gutters sizing.
 
 ```scss
 // Define grid inner gutter sizes
 $grid-inner-gutters: (
   xs: 8px,
-  sm: 15px,
-  md: 20px,
-  lg: 20px,
-  xl: 20px,
   2xl: 20px,
 );
 
 // Define grid outer gutter sizes
 $grid-outer-gutters: (
   xs: 23px,
-  sm: 30px,
-  md: 40px,
-  lg: 50px,
-  xl: 50px,
   2xl: 50px,
 );
 
@@ -387,7 +376,7 @@ It generates many helper classes :
 * `wrapper`: Grid wrapper with `$grid-container-width` value as max-width
 * `container`: Handle grid outer gutters
   * `container--relative`: Modifier to set a relative position to the container
-  * `container--no-gutter`: Modifier to remove outer gutters
+  * `container--ng`: Modifier to remove outer gutters
 * `row`: Flex container for columns
   * `row--reverse`: Reverse columns order
   * `row--full`: Break the wrapper max-width to fit the whole screen size
@@ -399,9 +388,9 @@ It generates many helper classes :
 Example :
 
 ```twig
-<div class="wrapper>
+<div class="wrapper">
   <div class="container">
-    <div class="row>
+    <div class="row">
       <div class="col-12 col-md-6 col-lg-3">
         Full with on small viewport, half width on medium viewport and one quarter on large viewport
       </div>

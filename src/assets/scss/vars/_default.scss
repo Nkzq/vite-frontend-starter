@@ -19,30 +19,22 @@ $breakpoints: (
 /* Fluid grid setup */
 $grid-inner-gutters: (
   xs: 8px,
-  sm: 15px,
-  md: 20px,
-  lg: 20px,
-  xl: 20px,
   2xl: 20px,
 );
 
 $grid-outer-gutters: (
   xs: 23px,
-  sm: 30px,
-  md: 40px,
-  lg: 50px,
-  xl: 50px,
   2xl: 50px,
 );
 
 $grid-columns: 12;
-$grid-container-width: #{rem(1024px)};
+$grid-container-width: 64rem;
 
 /* Typography */
 $font-base: Roboto, sans-serif;
 $font-heading: Roboto, sans-serif;
 
-$base-font-size: #{rem(16px)};
+$base-font-size: 1rem;
 
 $base-line-height: 1.4;
 $heading-line-height: 1.2;
@@ -57,10 +49,7 @@ $font-styles: (
     weight: 700,
   ),
   button: (
-    size: (
-      min: 12px,
-      max: 16px,
-    ),
+    size: 20px,
     weight: 700
   )
 );
@@ -94,4 +83,4 @@ $colors: (
 );
 
 /* Components */
-$loading-dimensions: 50px;
+$loading-dimensions: 3.125rem;

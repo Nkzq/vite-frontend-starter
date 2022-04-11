@@ -51,10 +51,12 @@
   }
 
   @if map.has-key($name, size, min) and map.has-key($name, size, max) {
-    @include poly-fluid-sizing('font-size', ($pfs-min: 18px, $pfs-max: 20px));
+    @include poly-fluid-sizing('font-size', ($pfs-min: map.get($name, size, min), $pfs-max: map.get($name, size, max)));
+  }
+  @else {
+    font-size: if(map.has-key($name, size), map.get($name, size), $base-font-size);
   }
 
-  font-size: if(map.has-key($name, size, default), map.get($name, size, default), $base-font-size);
   line-height: if(map.has-key($name, lh), map.get($name, lh), $base-line-height);
   font-weight: if(map.has-key($name, weight), map.get($name, weight), 400);
   color: if(map.has-key($name, color), map.get($name, color), inherit);

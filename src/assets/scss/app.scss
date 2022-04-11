@@ -3,14 +3,10 @@
 
 @import 'base';
 
-.section {
-  color: blue;
-  height: 1200px;
+button {
+  @include fs(button);
 }
 
-.footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
+h1 {
+  @include fs(title);
 }

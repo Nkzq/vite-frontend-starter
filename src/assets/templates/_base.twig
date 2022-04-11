@@ -8,19 +8,25 @@
     <meta name="color-scheme" content="light dark">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script type="module" src="/assets/js/app.js"></script>
+
     {# Metas #}
     {% block meta_tags %}{% endblock %}
+
     <title>{{ siteTitle }}</title>
+
     {# Styles #}
     {% block stylesheets %}{% endblock %}
   </head>
 
   <body class="{{ body_class ?? '' }}">
+
     {# Content #}
     <main class="main">
       {% block main %}{% endblock %}
     </main>
+
     {# JS #}
     {% block javascripts %}{% endblock %}
+
   </body>
 </html>

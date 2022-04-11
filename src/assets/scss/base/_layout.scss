@@ -1,24 +1,51 @@
 @use 'sass:map';
 @use 'sass:math';
 
+// Calculate all grid fluid sizing
+$fluid-outer-gutters: ();
+$fluid-outer-gutters-compensation: ();
+$fluid-inner-gutters: ();
+$fluid-inner-gutters-compensation: ();
+
+@each $bp, $size in $grid-outer-gutters {
+  $map: ();
+  $map: map.merge($map, (map.get($breakpoints, $bp): $size));
+  $fluid-outer-gutters: map.merge($fluid-outer-gutters, $map);
+
+  $map-compensation: ();
+  $map-compensation: map.merge($map-compensation, (map.get($breakpoints, $bp): $size * 2));
+  $fluid-outer-gutters-compensation: map.merge($fluid-outer-gutters-compensation, $map-compensation);
+}
+
+@each $bp, $size in $grid-inner-gutters {
+  $map: ();
+  $map: map.merge($map, (map.get($breakpoints, $bp): $size * 0.5));
+  $fluid-inner-gutters: map.merge($fluid-inner-gutters, $map);
+
+  $map-compensation: ();
+  $map-compensation: map.merge($map-compensation, (map.get($breakpoints, $bp): $size * 0.5 * -1));
+  $fluid-inner-gutters-compensation: map.merge($fluid-inner-gutters-compensation, $map-compensation);
+}
+
 .wrapper {
   max-width: $grid-container-width;
+  margin: 0 auto;
 }
 
 .container {
   margin-right: auto;
   margin-left: auto;
+  @include poly-fluid-sizing('padding-right', $fluid-outer-gutters);
+  @include poly-fluid-sizing('padding-left', $fluid-outer-gutters);
 
-  @each $name, $bp in $breakpoints {
-    @include mq($name) {
-      padding-right: map.get($grid-outer-gutters, $name);
-      padding-left: map.get($grid-outer-gutters, $name);
-    }
-  }
-
-  &--no-gutter {
+  &--ng {
     padding-right: 0;
     padding-left: 0;
+
+    .row--full {
+      padding-right: 0;
+      padding-left: 0;
+    }
   }
 
   &--relative {
@@ -31,14 +58,8 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
-  @each $name, $bp in $breakpoints {
-    @include mq($name) {
-      $gutter-compensation: map.get($grid-inner-gutters, $name) * 0.5 * -1;
-      margin-right: $gutter-compensation;
-      margin-left: $gutter-compensation;
-    }
-  }
+  @include poly-fluid-sizing('margin-right', $fluid-inner-gutters-compensation);
+  @include poly-fluid-sizing('margin-left', $fluid-inner-gutters-compensation);
 
   &--reverse {
     flex-direction: row-reverse;
@@ -46,54 +67,37 @@
 
   &--full {
     @include fullWidth;
-
-    @each $name, $bp in $breakpoints {
-      @include mq($name) {
-        $gutter: map.get($grid-outer-gutters, $name);
-        $width-compensation: $gutter * 2;
-        width: calc(100vw - #{$width-compensation});
-        margin-right: calc(-50vw + #{$gutter});
-        margin-left: calc(-50vw + #{$gutter});
-      }
-    }
+    @include poly-fluid-sizing('padding-right', $fluid-outer-gutters);
+    @include poly-fluid-sizing('padding-left', $fluid-outer-gutters);
   }
 }
 
 %col {
-  @each $name, $bp in $breakpoints {
-    @include mq($name) {
-      $half-gutter-width: map.get($grid-inner-gutters, $name) * 0.5;
-      padding-right: $half-gutter-width;
-      padding-left: $half-gutter-width;
-    }
-  }
+  @include poly-fluid-sizing('padding-right', $fluid-inner-gutters);
+  @include poly-fluid-sizing('padding-left', $fluid-inner-gutters);
 }
 
-@for $i from 0 through $grid-columns {
+@for $i from 1 through $grid-columns {
   .col-#{$i} {
     @extend %col;
-    flex-basis: math.div(100%, $grid-columns * $i);
-    max-width: math.div(100%, $grid-columns * $i);
+    flex-basis: math.div(100%, $grid-columns) * $i;
+    max-width: math.div(100%, $grid-columns) * $i;
   }
 
   .col-offset-#{$i} {
     @extend %col;
-    @if $i == 0 {
-      margin-left: 0;
-    } @else {
-      margin-left: math.div(100%, $grid-columns * $i);
-    }
+    margin-left: math.div(100%, $grid-columns) * $i;
   }
 }
 
 @each $name, $bp in $breakpoints {
-  @for $i from 0 through $grid-columns {
+  @for $i from 1 through $grid-columns {
     .col-#{$name}-#{$i} {
       @extend %col;
 
       @include mq($name) {
-        flex-basis: math.div(100%, $grid-columns * $i);
-        max-width: math.div(100%, $grid-columns * $i);
+        flex-basis: math.div(100%, $grid-columns) * $i;
+        max-width: math.div(100%, $grid-columns) * $i;
       }
     }
 
@@ -101,11 +105,7 @@
       @extend %col;
 
       @include mq($name) {
-        @if $i == 0 {
-          margin-left: 0;
-        } @else {
-          margin-left: math.div(100%, $grid-columns * $i);
-        }
+        margin-left: math.div(100%, $grid-columns) * $i;
       }
     }
   }
