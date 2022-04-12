@@ -51,12 +51,12 @@ Edit the [`config.js`](config.js) according to your needs.
 Scripts are working as modules with conditionnal import using `conditioner`, see the documentation [`here`](https://github.com/rikschennink/conditioner).
 
 Use `data-module` attribute with your corresponding JS file. You can also add context, like breakpoint and visibility, see the example below.
-Hello module will be imported if the current viewport has atleast a width of 768px and if the element is visible in the viewport.
+Hello module will be imported if the current viewport has atleast a width of 48rem (768px) and if the element is visible in the viewport.
 
 ```twig
 <h1
   data-module="Hello"
-  data-context="@media (min-width: 768px) and was @visible"
+  data-context="@media (min-width: 48rem) and was @visible"
 >
   {{ siteTitle }}
 </h1>
@@ -254,7 +254,7 @@ $pfs-max: map.get($breakpoints, 2xl);
 
 Usage :
 ```scss
-@include poly-fluid-sizing('font-size', ($pfs-min: 18px, $pfs-max: 24px));
+@include poly-fluid-sizing('font-size', ($pfs-min: rem(18px), $pfs-max: rem(24px)));
 ```
 
 * ##### Font styles
@@ -272,17 +272,16 @@ You can declare your different font styles as a map
 $font-styles: (
   title: (
     size: (
-      min: 16px,
-      max: 24px,
-    )
-    lh: 1.2,
+      min: 2rem,
+      max: 4.375rem,
+    ),
+    lh: $heading-line-height,
     weight: 700,
-    color: setColor(main),
   ),
-  subtitle: (
-    size: 14px,
-    lh: 1.5,
-  ),
+  button: (
+    size: 1.25rem,
+    weight: 700
+  )
 );
 
 // Then use fs mixin
@@ -327,12 +326,12 @@ There is more map, breakpoints time !
 
 ```scss
 $breakpoints: (
-  xs: 375px,
-  sm: 480px,
-  md: 768px,
-  lg: 1024px,
-  xl: 1280px,
-  2xl: 1440px,
+  xs: 22.5rem, // 360px
+  sm: 30rem, // 480px
+  md: 48rem, // 768px
+  lg: 64rem, // 1024px
+  xl: 80rem, // 1280px
+  2xl: 90rem, // 1440px
 );
 
 // Then use mq mixin
@@ -355,20 +354,20 @@ Gutter sizes are related to breakpoints, It uses fluid sizing to calculate gutte
 ```scss
 // Define grid inner gutter sizes
 $grid-inner-gutters: (
-  xs: 8px,
-  2xl: 20px,
+  xs: 0.5rem, // 8px
+  2xl: 1.25rem, // 20px
 );
 
 // Define grid outer gutter sizes
 $grid-outer-gutters: (
-  xs: 23px,
-  2xl: 50px,
+  xs: 1.25rem, // 20px
+  2xl: 3.125rem, // 50px
 );
 
 // Define number of grid columns
 $grid-columns: 12;
 // Define grid container max-width
-$grid-container-width: #{rem(1024px)};
+$grid-container-width: 64rem;
 ```
 
 It generates many helper classes :
@@ -381,9 +380,9 @@ It generates many helper classes :
   * `row--reverse`: Reverse columns order
   * `row--full`: Break the wrapper max-width to fit the whole screen size
 * `col-{number}`: A column whose width is equal no $grid-columns / {number}
-* `col-{breakpoint}-{number}: Same as above, but with a breakpoint condition
+* `col-{breakpoint}-{number}`: Same as above, but with a breakpoint condition
 * `col-offset-{number}`: Push the columns
-* `col-{breakpoint}-offset-{number}: Same as above, but with a breakpoint condition
+* `col-{breakpoint}-offset-{number}`: Same as above, but with a breakpoint condition
 
 Example :
 

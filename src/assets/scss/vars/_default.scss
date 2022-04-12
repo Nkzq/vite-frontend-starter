@@ -8,23 +8,23 @@
 $bp-helper: 'true';
 
 $breakpoints: (
-  xs: 375px,
-  sm: 480px,
-  md: 768px,
-  lg: 1024px,
-  xl: 1280px,
-  2xl: 1440px,
+  xs: 22.5rem, // 360px
+  sm: 30rem, // 480px
+  md: 48rem, // 768px
+  lg: 64rem, // 1024px
+  xl: 80rem, // 1280px
+  2xl: 90rem, // 1440px
 );
 
 /* Fluid grid setup */
 $grid-inner-gutters: (
-  xs: 8px,
-  2xl: 20px,
+  xs: 0.5rem, // 8px
+  2xl: 1.25rem, // 20px
 );
 
 $grid-outer-gutters: (
-  xs: 23px,
-  2xl: 50px,
+  xs: 1.25rem, // 20px
+  2xl: 3.125rem, // 50px
 );
 
 $grid-columns: 12;
@@ -42,14 +42,14 @@ $heading-line-height: 1.2;
 $font-styles: (
   title: (
     size: (
-      min: 35px,
-      max: 70px,
+      min: 2rem,
+      max: 4.375rem,
     ),
     lh: $heading-line-height,
     weight: 700,
   ),
   button: (
-    size: 20px,
+    size: 1.25rem,
     weight: 700
   )
 );
