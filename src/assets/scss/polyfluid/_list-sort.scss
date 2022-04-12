@@ -7,7 +7,7 @@
 @function list-sort($list) {
   $sortedlist: ();
   @while length($list) > 0 {
-    $value: nth($list,1);
+    $value: nth($list, 1);
     @each $item in $list {
       @if $item < $value {
         $value: $item;

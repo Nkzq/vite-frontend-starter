@@ -19,11 +19,11 @@ $fluid-inner-gutters-compensation: ();
 
 @each $bp, $size in $grid-inner-gutters {
   $map: ();
-  $map: map.merge($map, (map.get($breakpoints, $bp): $size * 0.5));
+  $map: map.merge($map, (map.get($breakpoints, $bp): $size * .5));
   $fluid-inner-gutters: map.merge($fluid-inner-gutters, $map);
 
   $map-compensation: ();
-  $map-compensation: map.merge($map-compensation, (map.get($breakpoints, $bp): $size * 0.5 * -1));
+  $map-compensation: map.merge($map-compensation, (map.get($breakpoints, $bp): $size * .5 * -1));
   $fluid-inner-gutters-compensation: map.merge($fluid-inner-gutters-compensation, $map-compensation);
 }
 
@@ -66,7 +66,7 @@ $fluid-inner-gutters-compensation: ();
   }
 
   &--full {
-    @include fullWidth;
+    @include full-width;
     @include poly-fluid-sizing('padding-right', $fluid-outer-gutters);
     @include poly-fluid-sizing('padding-left', $fluid-outer-gutters);
   }

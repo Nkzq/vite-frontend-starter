@@ -2,7 +2,7 @@ body {
   font-family: $font-base;
   font-size: $base-font-size;
   line-height: $base-line-height;
-  color: setColor(white);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  color: set-color('white');
+  -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+  -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
 }

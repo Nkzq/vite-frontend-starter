@@ -288,27 +288,27 @@ Like font styles, colors are also declared as a map
 
 ```scss
 $colors: (
-  black: (
+  'black': (
     base: #000
   ),
-  white: (
+  'white': (
     base: #fff
   ),
-  main: (
+  'main': (
     light: #63ccff,
     base: #039be5,
     dark: #006db3,
   ),
 );
 
-// Then use setColor function, default type is "base"
+// Then use set-color function, default type is "base"
 
 .white {
-  color: setColor(white);
+  color: set-color('white');
 }
 
 .main--dark {
-  background-color: setColor(main, dark);
+  background-color: set-color('main', dark);
 }
 ```
 

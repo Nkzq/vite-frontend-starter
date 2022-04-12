@@ -19,22 +19,19 @@
 // Usage:
 // @include mixin(lg);
 @mixin mq($mq-breakpoint, $mq-breakpoints: $breakpoints) {
-  $mq-media-query: "screen and";
+  $mq-media-query: 'screen and';
 
   @if $mq-breakpoint == landscape or $mq-breakpoint == portrait {
-    $mq-media-query: "#{$mq-media-query} (orientation: #{$mq-breakpoint})";
-  }
-  @else if $mq-breakpoint == retina {
-    $mq-media-query: "#{$mq-media-query} (-webkit-min-device-pixel-ratio: 2)," +
-                     "#{$mq-media-query} (min-resolution: 2dppx)";
-  }
-  @else {
+    $mq-media-query: '#{$mq-media-query} (orientation: #{$mq-breakpoint})';
+  } @else if $mq-breakpoint == retina {
+    $mq-media-query: '#{$mq-media-query} (-webkit-min-device-pixel-ratio: 2),' + '#{$mq-media-query} (min-resolution: 2dppx)';
+  } @else {
     // If $mq-breakpoint is a key that exists in
     // $mq-breakpoints, get and use the value
     @if map.has-key($mq-breakpoints, $mq-breakpoint) {
       $mq-breakpoint: map.get($mq-breakpoints, $mq-breakpoint);
     }
-    $mq-media-query: "#{$mq-media-query} (min-width: #{$mq-breakpoint})";
+    $mq-media-query: '#{$mq-media-query} (min-width: #{$mq-breakpoint})';
   }
 
   @media #{$mq-media-query} {
@@ -52,8 +49,7 @@
 
   @if map.has-key($name, size, min) and map.has-key($name, size, max) {
     @include poly-fluid-sizing('font-size', ($pfs-min: map.get($name, size, min), $pfs-max: map.get($name, size, max)));
-  }
-  @else {
+  } @else {
     font-size: if(map.has-key($name, size), map.get($name, size), $base-font-size);
   }
 
@@ -64,8 +60,8 @@
 
 // Force element to have full viewport width
 // Usage:
-// @include fullWidth;
-@mixin fullWidth {
+// @include full-width;
+@mixin full-width {
   width: 100vw;
   position: relative;
   left: 50%;
@@ -76,8 +72,8 @@
 
 // Reset full width mixin
 // Usage:
-// @include resetFullWidth;
-@mixin resetFullWidth {
+// @include reset-full-width;
+@mixin reset-full-width {
   width: auto;
   left: 0;
   right: 0;
@@ -102,25 +98,25 @@
 // @include object-fit(contain) ;
 // or object-fit and object-position:
 // @include object-fit(cover, top);
-@mixin object-fit($fit: cover, $position: null){
+@mixin object-fit($fit: cover, $position: null) {
   -o-object-fit: $fit;
-     object-fit: $fit;
+  object-fit: $fit;
   @if $position {
-	  -o-object-position: $position;
-	     object-position: $position;
-  	font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+    -o-object-position: $position;
+    object-position: $position;
+    font-family: 'object-fit: #{$fit}; object-position: #{$position}';
   } @else {
-  	font-family: 'object-fit: #{$fit}';
+    font-family: 'object-fit: #{$fit}';
   }
 }
 
 // Keep aspect ratio
 // Usage:
 // @include aspect-ratio(16, 9);
-@mixin aspect-ratio($x,$y, $pseudo: false) {
-  $padding: unquote( ( $y / $x ) * 100 + '%' );
+@mixin aspect-ratio($x, $y, $pseudo: false) {
+  $padding: unquote(($y / $x) * 100 + '%');
   @if $pseudo {
-    &:before {
+    &::before {
       @include pseudo($pos: relative);
       width: 100%;
       padding-top: $padding;
@@ -133,8 +129,8 @@
 // Triangle with CSS
 // Usage
 // @include (#fff, 'down', 10px);
-@mixin triangle($color, $direction, $size: 6px, $position: absolute, $round: false){
-  content: "";
+@mixin triangle($color, $direction, $size: 6px, $position: absolute, $round: false) {
+  content: '';
   display: block;
   position: $pos;
   width: 0;
@@ -146,12 +142,12 @@
     border-left: $size solid transparent;
     border-right: $size solid transparent;
     border-top: $size solid $color;
-    margin-top: 0 - round( $size / 2.5 );
+    margin-top: 0 - round($size / 2.5);
   } @else if $direction == up {
     border-left: $size solid transparent;
     border-right: $size solid transparent;
     border-bottom: $size solid $color;
-    margin-bottom: 0 - round( $size / 2.5 );
+    margin-bottom: 0 - round($size / 2.5);
   } @else if $direction == right {
     border-top: $size solid transparent;
     border-bottom: $size solid transparent;
@@ -167,9 +163,10 @@
 
 // Overlay using box shadow
 // Usage:
-// @include(500px, setColor(dark), 0.3);
-@mixin overlay($size, $color: setColor(black), $opacity: 0.5) {
-  box-shadow: 0 0 0 $size inset rgba($color, $opacity);
+// @include(500px, set-color(dark), 0.3);
+@mixin overlay($size, $color: set-color('black'), $opacity: .5) {
+  $shadow: rgba($color, $opacity);
+  box-shadow: 0 0 0 $size inset $shadow;
 }
 
 // Declare a font face
@@ -177,16 +174,16 @@
 // @include(Roboto, ../fonts/roboto-v29-latin-regular, 900);
 @mixin declare-font-face($font-family, $font-filename, $font-weight: 400, $font-style: normal, $font-stretch: normal) {
   @font-face {
-      font-family: "#{$font-family}";
-      font-style: $font-style;
-      font-weight: $font-weight;
-      font-stretch: $font-stretch;
-      src:
-        local("#{$font-family}"),
-        url(#{$font-filename}.woff2) format("woff2"),
-        url(#{$font-filename}.woff) format("woff");
-      font-display: swap;
-      unicode-range: U+0-10FFFF;
+    font-family: '#{$font-family}';
+    font-style: $font-style;
+    font-weight: $font-weight;
+    font-stretch: $font-stretch;
+    src:
+    local('#{$font-family}'),
+    url('#{$font-filename}.woff2') format('woff2'),
+    url('#{$font-filename}.woff') format('woff');
+    font-display: swap;
+    unicode-range: U+0-10FFFF;
   }
 }
 
@@ -203,19 +200,19 @@
   clip: rect(1px, 1px, 1px, 1px) !important;
   clip-path: inset(50%) !important;
   white-space: nowrap !important;
-  border: 0 !important;
+  border: none !important;
 
   @if $focusable {
-      &:focus,
-      &:active {
-          width: auto !important;
-          height: auto !important;
-          margin: auto !important;
-          overflow: visible !important;
-          clip: auto !important;
-          clip-path: none !important;
-          white-space: normal !important;
-      }
+    &:focus,
+    &:active {
+      width: auto !important;
+      height: auto !important;
+      margin: auto !important;
+      overflow: visible !important;
+      clip: auto !important;
+      clip-path: none !important;
+      white-space: normal !important;
+    }
   }
 }
 
@@ -227,7 +224,7 @@
   -ms-overflow-style: none; /* For Internet Explorer and Edge */
 
   &::-webkit-scrollbar {
-    width: 0px; /* For Chrome, Safari, and Opera */
+    width: 0; /* For Chrome, Safari, and Opera */
   }
 }
 

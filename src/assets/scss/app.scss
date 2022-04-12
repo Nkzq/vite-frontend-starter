@@ -2,11 +2,3 @@
 @import 'vars/default';
 
 @import 'base';
-
-button {
-  @include fs(button);
-}
-
-h1 {
-  @include fs(title);
-}

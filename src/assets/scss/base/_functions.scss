@@ -3,16 +3,16 @@
 
 // Get color from $colors array
 // Usage:
-// background-color: setColor(main, light);
-@function setColor($scheme, $tone: base) {
+// background-color: set-color(main, light);
+@function set-color($scheme, $tone: base) {
   @return map.get(map.get($colors, $scheme), $tone);
 }
 
 // Convert pixel value to rem
 // Usage:
 // width: rem(200px);
-@function rem($pxValue) {
-  @return math.div($pxValue, 16px) * 1rem;
+@function rem($px-value) {
+  @return math.div($px-value, 16px) * 1rem;
 }
 
 // Get a z-index value from a layer name
@@ -21,15 +21,15 @@
 // @param {Map} $list - [optional] list of elements
 // @return {Number}
 // @require $z-indexes
-@function z($element, $list:"") {
-  @if $list == "" {
-      $list: $z-indexes;
+@function z($element, $list: '') {
+  @if $list == '' {
+    $list: $z-indexes;
   }
 
   $z-index: index($list, $element);
 
   @if $z-index {
-      @return $z-index;
+    @return $z-index;
   }
 
   @warn 'There is no item "#{$element}" in this list; choose one of: #{$list}';

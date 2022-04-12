@@ -20,7 +20,7 @@
 
   // Error if the number of breakpoints is < 2
   @if ($length < 2) {
-    @error "poly-fluid-sizing() $map requires at least two values";
+    @error 'poly-fluid-sizing() $map requires at least two values';
   }
 
   // Sort the map by viewport width (key)
@@ -40,12 +40,12 @@
     $high-separator: list-separator(nth($keys, $i + 1));
 
     @if ($low-separator != $high-separator) {
-      @error "poly-fluid-sizing() values must use the same separator";
+      @error 'poly-fluid-sizing() values must use the same separator';
     }
 
-    @media (min-width:nth($keys, $i)) {
+    @media (min-width: nth($keys, $i)) {
       @if (length($low-values) != length($high-values)) {
-        @error "poly-fluid-sizing() values must have same number args";
+        @error 'poly-fluid-sizing() values must have same number args';
       }
 
       @for $j from 1 through $total {
@@ -66,7 +66,7 @@
   }
 
   // Maxmimum size
-  @media (min-width:nth($keys,$length)) {
-    #{$property}: map-get($map, nth($keys,$length));
+  @media (min-width: nth($keys, $length)) {
+    #{$property}: map-get($map, nth($keys, $length));
   }
 }

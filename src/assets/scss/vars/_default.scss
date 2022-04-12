@@ -1,4 +1,4 @@
-@use "sass:map";
+@use 'sass:map';
 
 /**
  * Variables
@@ -18,7 +18,7 @@ $breakpoints: (
 
 /* Fluid grid setup */
 $grid-inner-gutters: (
-  xs: 0.5rem, // 8px
+  xs: .5rem, // 8px
   2xl: 1.25rem, // 20px
 );
 
@@ -66,15 +66,15 @@ $z-indexes: (
 );
 
 /* Colour palette */
-/* Use setColor function */
+/* Use set-color function */
 $colors: (
-  black: (
+  'black': (
     base: #000
   ),
-  white: (
+  'white': (
     base: #fff
   ),
-  main: (
+  'main': (
     light: #63ccff,
     base: #039be5,
     dark: #006db3,

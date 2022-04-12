@@ -19,18 +19,18 @@ conditioner.addPlugin({
     name: 'visible',
     create: (context, element) => ({
       matches: false,
-      addListener(change) {
+      addListener (change) {
         new IntersectionObserver((entries) => {
-          this.matches = entries.pop().isIntersecting === context;
-          change();
+          this.matches = entries.pop().isIntersecting === context
+          change()
         }).observe(element)
-      },
-    }),
+      }
+    })
   },
 
   moduleSetName: (name) => `./modules/${name}.js`,
   moduleGetConstructor: (module) => module.default,
-  moduleImport: (name) => import(/* @vite-ignore */`${name}`),
+  moduleImport: (name) => import(/* @vite-ignore */`${name}`)
 })
 
 conditioner.hydrate(document.documentElement)
@@ -39,13 +39,12 @@ conditioner.hydrate(document.documentElement)
  * Due to LazySizes dynamic src
  * We have to import all images to get them built
  */
-const images = import.meta.globEager('../images/*')
-
+const images = import.meta.globEager('../images/*') // eslint-disable-line
 
 /**
  * LazySizes configuration
  * https://github.com/aFarkas/lazysizes/#js-api---options
  */
 lazySizes.cfg.nativeLoading = {
-  setLoadingAttribute: false,
+  setLoadingAttribute: false
 }

@@ -1,4 +1,4 @@
-@use "sass:map";
+@use 'sass:map';
 
 @if $bp-helper {
   body {
@@ -9,15 +9,15 @@
       bottom: rem(20px);
       z-index: z('helper');
       padding: rem(4px) rem(10px);
-      background-color: setColor(main);
-      color: setColor(white);
+      background-color: set-color('main');
+      color: set-color('white');
       font-size: 14px;
       font-weight: bold;
       border-radius: rem(12px);
 
       @each $bp, $px in $breakpoints {
         @include mq($bp) {
-          content: "#{$bp} > #{$px}";
+          content: '#{$bp} > #{$px}';
         }
       }
     }

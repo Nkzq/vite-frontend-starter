@@ -10,18 +10,16 @@
     "preview": "vite preview",
     "webp": "node scripts/webp.js",
     "lint:sass": "sass-lint -v -q",
-    "lint:js": "eslint --ext .js src/js/"
+    "lint:js": "standard 'src/assets/js/**/*.js'",
+    "lint:js-fix": "standard --fix 'src/assets/js/**/*.js'"
+  },
+  "standard": {
+    "globals": [ "IntersectionObserver" ]
   },
   "devDependencies": {
     "autoprefixer": "^10.4.4",
     "chalk": "^5.0.1",
     "critical": "^4.0.1",
-    "eslint": "^8.11.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.29.4",
-    "eslint-plugin-react-hooks": "^4.3.0",
     "fast-glob": "^3.2.11",
     "imagemin": "^8.0.1",
     "imagemin-webp": "^7.0.0",
@@ -29,6 +27,7 @@
     "purgecss": "^4.1.3",
     "sass": "^1.49.9",
     "sass-lint": "^1.13.1",
+    "standard": "^16.0.4",
     "terser": "^5.12.1",
     "vite": "^2.8.0",
     "vite-plugin-copy": "^0.1.6",

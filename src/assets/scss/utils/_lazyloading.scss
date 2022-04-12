@@ -1,8 +1,8 @@
-@use "sass:math";
+@use 'sass:math';
 
 .lazyload,
 .lazyloading {
-  background: setColor(main);
+  background: set-color(main);
   opacity: 0;
 }
 
@@ -19,7 +19,7 @@
   opacity: 1;
 
   &::before {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     top: 0;
@@ -27,12 +27,12 @@
     bottom: 0;
     left: 0;
     z-index: 2;
-    background: setColor(main);
+    background: set-color(main);
     transition: opacity .5s, z-index .5s ease .5s;
   }
 
   &::after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     top: calc(50% - math.div($loading-dimensions, 2));
@@ -40,7 +40,7 @@
     z-index: 3;
     width: $loading-dimensions;
     height: $loading-dimensions;
-    border: 5px solid setColor(white);
+    border: 5px solid set-color('white');
     border-top-color: transparent;
     border-radius: $loading-dimensions;
     opacity: 1;

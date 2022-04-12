@@ -1,12 +1,11 @@
 files:
   # formatter: stylish
-  include: 'src/scss/*'
+  include: 'src/assets/scss/**/*'
   ignore:
-    - 'src/scss/base/_reset.scss'
-    - 'src/scss/base/_print.scss'
-    - 'src/scss/base/_fonts.scss'
-    - 'src/scss/base/_mixins.scss'
-    - 'src/scss/dirty/_hacks.scss'
+    - 'src/assets/scss/base/_reset.scss'
+    - 'src/assets/scss/base/_print.scss'
+    - 'src/assets/scss/base/_fonts.scss'
+    - 'src/assets/scss/dirty/_hacks.scss'
 
 rules:
   # Extends
@@ -15,10 +14,7 @@ rules:
   placeholder-in-extend: 2
 
   # Mixins
-  mixins-before-declarations:
-    - 2
-    -
-      exclude: ['bp']
+  mixins-before-declarations: 0
 
   # Line Spacing
   one-declaration-per-line: 2
@@ -35,12 +31,14 @@ rules:
   no-disallowed-properties: 0
   no-duplicate-properties: 2
   no-empty-rulesets: 2
-  no-extends: 1
+  no-extends: 0
   no-ids: 2
   no-important: 0
   no-invalid-hex: 2
   no-mergeable-selectors: 2
-  no-misspelled-properties: 2
+  no-misspelled-properties:
+    - 2
+    - extra-properties: ["line-clamp", "scrollbar-width"]
   no-qualifying-elements:
     - 2
     -
@@ -52,7 +50,7 @@ rules:
   no-universal-selectors: 2
   no-url-protocols: 1
   no-vendor-prefixes: 2
-  no-warn: 2
+  no-warn: 0
   property-units: 0
 
   # Nesting
