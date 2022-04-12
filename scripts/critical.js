@@ -16,7 +16,10 @@ const criticalPlugin = () => {
           base: `${config.buildDir}/`,
           target: {
             html: bundle[file].fileName,
-          }
+          },
+          ignore: {
+            atrule: ['@font-face'],
+          },
         })
       }
     }

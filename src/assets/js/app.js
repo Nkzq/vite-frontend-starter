@@ -30,7 +30,7 @@ conditioner.addPlugin({
 
   moduleSetName: (name) => `./modules/${name}.js`,
   moduleGetConstructor: (module) => module.default,
-  moduleImport: (name) => import(/* @vite-ignore */ /* webpackMode: "lazy" */ `${name}`),
+  moduleImport: (name) => import(/* @vite-ignore */`${name}`),
 })
 
 conditioner.hydrate(document.documentElement)
@@ -40,6 +40,7 @@ conditioner.hydrate(document.documentElement)
  * We have to import all images to get them built
  */
 const images = import.meta.globEager('../images/*')
+
 
 /**
  * LazySizes configuration

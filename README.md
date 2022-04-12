@@ -1,4 +1,4 @@
-# Vite front-end boilerplate
+# ⚡️ Vite front-end boilerplate
 
 A frontend boilerplate using Vite, SASS, Twig, ES6 modules.
 Shipped with some mixins, SVG sprite ready and images optimization.
@@ -7,16 +7,12 @@ Also great performance tools : Purge & Critical CSS.
 ## Requirements
 
 * `node` : `>=16`
-* `yarn` or `npm`
+* `yarn` (or equivalent)
 
 ## Installation
 
 ```sh
 $ yarn install
-```
-or
-```sh
-$ npm install
 ```
 
 ## Configuration
@@ -81,10 +77,6 @@ You can convert all your `.png` and `.jpg` images to WebP format by using this c
 
 ```sh
 $ yarn webp
-```
-or
-```sh
-$ npm run webp
 ```
 
 There is a twig template located under `src/assets/templates/utils/_image.twig` which can help you.
@@ -377,8 +369,8 @@ It generates many helper classes :
   * `container--relative`: Modifier to set a relative position to the container
   * `container--ng`: Modifier to remove outer gutters
 * `row`: Flex container for columns
-  * `row--reverse`: Reverse columns order
-  * `row--full`: Break the wrapper max-width to fit the whole screen size
+  * `row--reverse`: Modifier to reverse columns order
+  * `row--full`: Modifier to break the wrapper max-width to fit the whole screen size
 * `col-{number}`: A column whose width is equal no $grid-columns / {number}
 * `col-{breakpoint}-{number}`: Same as above, but with a breakpoint condition
 * `col-offset-{number}`: Push the columns
@@ -441,10 +433,6 @@ Start a local development server with previous defined settings, default is `htt
 ```sh
 $ yarn dev
 ```
-or
-```sh
-$ npm run dev
-```
 
 ### Production
 
@@ -453,29 +441,17 @@ Build all assets for production :
 ```sh
 $ yarn build
 ```
-or
-```sh
-$ npm run build
-```
 
 To include WebP images convert :
 
 ```sh
 $ yarn prod
 ```
-or
-```sh
-$ npm run prod
-```
 
 Preview your production build :
 
 ```sh
 $ yarn preview
-```
-or
-```sh
-$ npm run preview
 ```
 
 ## Run Code Style Linters

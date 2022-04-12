@@ -3,7 +3,6 @@ const config = {
   server: {
     host: 'localhost',
     port: 8000,
-    https: true,
   },
   rootDir: 'src',
   buildDir: 'dist',

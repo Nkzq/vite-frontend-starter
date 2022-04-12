@@ -9,6 +9,7 @@ import viteImagemin from 'vite-plugin-imagemin'
 import config from './config.js'
 import purgeCSSPlugin from './scripts/purgecss.js'
 import criticalPlugin from './scripts/critical.js'
+import dynamicImportPlugin from './scripts/dynamicImport.js'
 
 import { createRequire } from 'module'
 const require = createRequire(import.meta.url)
@@ -45,6 +46,7 @@ export default defineConfig ({
       inject: 'body-last',
       customDomId: 'sprite',
     }),
+    dynamicImportPlugin(),
     purgeCSSPlugin(),
     criticalPlugin(),
   ],
