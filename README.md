@@ -25,14 +25,33 @@ Edit the [`config.js`](config.js) according to your needs.
 * **`rootDir`**: project root directory (where index.html is located). Can be an absolute path, or a path relative to the location of the config file itself.
 * **`buildDir`**: specify the output directory (relative to project root).
 
-### Plugins
+### Purge CSS
 
-* **`purgecss`**: toggle PurgeCSS activation, also provide an (optional) array of classes to add to the [`safelist`](https://purgecss.com/safelisting.html)
-* **`critical`**: toggle Critical CSS activation
+* **`purgecss`**: toggle PurgeCSS, also provide an (optional) array of classes to add to the [`safelist`](https://purgecss.com/safelisting.html)
+
+### Critical CSS
+
+* **`critical`**: toggle Critical CSS
 
 ### Images
 
 * **`imagemin`**: an object containing the whole images optimization configuration, for more details check [`vite-plugin-imagemin`](https://github.com/vbenjs/vite-plugin-imagemin)
+
+<!-- ### Favicons
+
+* **`favicons`**: The options specified are handed over as is to [favicons](https://github.com/haydenbleasel/favicons),
+except that if `appName`, `appDescription`, `version`, `developerName` or
+`developerURL` are left `undefined`, they will be automatically inferred
+respectively from `name`, `description`, `version`, `author.name` and
+`author.url` as defined in the nearest `package.json` if available.
+And if there's no `author` it will use the first in the `contributors`.
+To disable automatically retrieving metadata from `package.json`, simply set
+to `null` the properties you want to omit.
+
+You can specify the favicon name and location in `vite.config.js`. -->
+
+### HTML Minify
+* **`htmlMinify`**: toggle HTML minify with Terser. The options specified are handed over as is to [html-minifier-terser](https://github.com/terser/html-minifier-terser#options-quick-reference),
 
 ## Development
 

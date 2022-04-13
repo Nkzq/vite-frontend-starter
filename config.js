@@ -13,6 +13,14 @@ const config = {
   critical: {
     enable: true,
   },
+  htmlMinify: {
+    enable: true,
+    options: {
+      collapseWhitespace: true,
+      removeAttributeQuotes: true,
+      removeComments: true,
+    },
+  },
   imagemin: {
     gifsicle: {
       optimizationLevel: 7,
@@ -42,7 +50,15 @@ const config = {
         },
       ],
     },
-  }
+  },
+  // favicons: {
+  //   background: '#ddd',
+  //   theme_color: '#333',
+  //   icons: {
+  //     coast: false,
+  //     yandex: false
+  //   },
+  // },
 }
 
 export default config

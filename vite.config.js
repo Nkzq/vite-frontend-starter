@@ -10,12 +10,13 @@ import config from './config.js'
 import purgeCSSPlugin from './scripts/purgecss.js'
 import criticalPlugin from './scripts/critical.js'
 import dynamicImportPlugin from './scripts/dynamicImport.js'
+import htmlMinifierPlugin from './scripts/htmlMinifier.js'
 
 import { createRequire } from 'module'
 const require = createRequire(import.meta.url)
 const file = fileURLToPath(import.meta.url)
 const dir = dirname(file)
-const { rootDir, buildDir, server, imagemin } = config
+const { rootDir, buildDir, server, imagemin, favicons } = config
 
 // JSON data
 const en = require(`./${rootDir}/data/en.json`)
@@ -41,7 +42,7 @@ export default defineConfig ({
     }),
     viteImagemin(imagemin),
     createSvgIconsPlugin({
-      iconDirs: [path.resolve(process.cwd(), `${rootDir}/icons`)],
+      iconDirs: [path.resolve(process.cwd(), `${rootDir}/assets/icons`)],
       symbolId: 'icon-[name]',
       inject: 'body-last',
       customDomId: 'sprite',
@@ -49,5 +50,6 @@ export default defineConfig ({
     dynamicImportPlugin(),
     purgeCSSPlugin(),
     criticalPlugin(),
+    htmlMinifierPlugin(),
   ],
 })

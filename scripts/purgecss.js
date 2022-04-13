@@ -1,10 +1,13 @@
 import { PurgeCSS } from 'purgecss'
+
 import config from '../config.js'
 
+const { purgecss } = config
+
 const purgeCSSPlugin = () => {
-  if (!config.purgecss.enable) return false
+  if (!purgecss.enable) return false
   let _html = ''
-  const safeList = config.purgecss.safeList || []
+  const safeList = purgecss.safeList || []
   return {
     name: 'purge-css',
     enforce: 'post',

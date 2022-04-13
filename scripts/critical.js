@@ -1,8 +1,11 @@
-import critical from 'critical'
+import * as criticalModule from 'critical'
+
 import config from '../config.js'
 
+const { buildDir, critical } = config
+
 const criticalPlugin = () => {
-  if (!config.critical.enable) return false
+  if (!critical.enable) return false
   return {
     name: 'critical-css',
     enforce: 'post',
@@ -10,10 +13,10 @@ const criticalPlugin = () => {
       const htmlFiles = Object.keys(bundle).filter(key => key.endsWith('.html'))
       if (!htmlFiles) return
       for (const file of htmlFiles) {
-        critical.generate({
+        criticalModule.generate({
           inline: true,
           html: bundle[file].source,
-          base: `${config.buildDir}/`,
+          base: `${buildDir}/`,
           target: {
             html: bundle[file].fileName,
           },

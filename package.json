@@ -14,13 +14,16 @@
     "lint:js-fix": "standard --fix 'src/assets/js/**/*.js'"
   },
   "standard": {
-    "globals": [ "IntersectionObserver" ]
+    "globals": [
+      "IntersectionObserver"
+    ]
   },
   "devDependencies": {
     "autoprefixer": "^10.4.4",
     "chalk": "^5.0.1",
     "critical": "^4.0.1",
     "fast-glob": "^3.2.11",
+    "html-minifier-terser": "^7.0.0-alpha.2",
     "imagemin": "^8.0.1",
     "imagemin-webp": "^7.0.0",
     "postcss": "^8.4.12",
