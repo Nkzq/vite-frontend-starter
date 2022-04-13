@@ -27,11 +27,14 @@ Edit the [`config.js`](config.js) according to your needs.
 
 ### Purge CSS
 
-* **`purgecss`**: toggle PurgeCSS, also provide an (optional) array of classes to add to the [`safelist`](https://purgecss.com/safelisting.html)
+* **`purgecss`**:
+  * `enable`: toggle PurgeCSS.
+  * `safeList`: (optional) array of classes to add to the [`safelist`](https://purgecss.com/safelisting.html)
 
 ### Critical CSS
 
-* **`critical`**: toggle Critical CSS
+* **`critical`**:
+  * `enable`: toggle Critical CSS
 
 ### Images
 
@@ -51,7 +54,9 @@ to `null` the properties you want to omit.
 You can specify the favicon name and location in `vite.config.js`. -->
 
 ### HTML Minify
-* **`htmlMinify`**: toggle HTML minify with Terser. The options specified are handed over as is to [html-minifier-terser](https://github.com/terser/html-minifier-terser#options-quick-reference),
+* **`htmlMinify`**:
+  * `enable`: toggle HTML minify with Terser.
+  * `options`: The options specified are handed over as is to [html-minifier-terser](https://github.com/terser/html-minifier-terser#options-quick-reference),
 
 ## Development
 
