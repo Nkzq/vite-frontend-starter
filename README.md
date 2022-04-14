@@ -40,19 +40,6 @@ Edit the [`config.js`](config.js) according to your needs.
 
 * **`imagemin`**: an object containing the whole images optimization configuration, for more details check [`vite-plugin-imagemin`](https://github.com/vbenjs/vite-plugin-imagemin)
 
-<!-- ### Favicons
-
-* **`favicons`**: The options specified are handed over as is to [favicons](https://github.com/haydenbleasel/favicons),
-except that if `appName`, `appDescription`, `version`, `developerName` or
-`developerURL` are left `undefined`, they will be automatically inferred
-respectively from `name`, `description`, `version`, `author.name` and
-`author.url` as defined in the nearest `package.json` if available.
-And if there's no `author` it will use the first in the `contributors`.
-To disable automatically retrieving metadata from `package.json`, simply set
-to `null` the properties you want to omit.
-
-You can specify the favicon name and location in `vite.config.js`. -->
-
 ### HTML Minify
 * **`htmlMinify`**:
   * `enable`: toggle HTML minify with Terser.
