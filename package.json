@@ -23,6 +23,7 @@
     "chalk": "^5.0.1",
     "critical": "^4.0.1",
     "fast-glob": "^3.2.11",
+    "favicons": "^7.0.0-beta.4",
     "html-minifier-terser": "^7.0.0-alpha.2",
     "imagemin": "^8.0.1",
     "imagemin-webp": "^7.0.0",
@@ -33,8 +34,6 @@
     "standard": "^16.0.4",
     "terser": "^5.12.1",
     "vite": "^2.8.0",
-    "vite-plugin-copy": "^0.1.6",
-    "vite-plugin-dynamic-import": "^0.8.0",
     "vite-plugin-imagemin": "^0.6.1",
     "vite-plugin-svg-icons": "^2.0.1",
     "vite-plugin-twig": "^1.1.1"
