@@ -1,8 +1,8 @@
 # ⚡️ Vite front-end boilerplate
 
-A frontend boilerplate using Vite, SASS, Twig, ES6 modules.
-Shipped with some mixins, SVG sprite ready and images optimization.
-Also great performance tools : Purge & Critical CSS.
+This repository contains a frontend boilerplate made with Vite, SASS, Twig and the ES6 modules.
+It is shipped with some pre-made mixins, a configured SVG-Sprite setup and some image optimization functionalities.
+It also includes some great performance enhancement tools : Purge & Critical CSS.
 
 ## Requirements
 
@@ -21,29 +21,29 @@ Edit the [`config.js`](config.js) according to your needs.
 
 ### Environment
 
-* **`server`**: configure development server, specify `host`, `port`. Refer to the full development server configuration options for [`Vite server options`](https://vitejs.dev/config/#server-options).
-* **`rootDir`**: project root directory (where index.html is located). Can be an absolute path, or a path relative to the location of the config file itself.
-* **`buildDir`**: specify the output directory (relative to project root).
+* **`server`**: to configure the development server specify the `host` and `port` values. You can refer to the full development server configuration options for [`Vite server options`](https://vitejs.dev/config/#server-options).
+* **`rootDir`**: specify the project's root directory (where your index.html file is located). The specified path can be an absolute path or be relative to the location of the config.js file.
+* **`buildDir`**: specify the output directory (relative to the project's root).
 
 ### Purge CSS
 
 * **`purgecss`**:
-  * `enable`: toggle PurgeCSS.
-  * `safeList`: (optional) array of classes to add to the [`safelist`](https://purgecss.com/safelisting.html)
+  * `enable`: boolean, toggle to activate or deactivate Purge CSS.
+  * `safeList`: optional, an array of classes to add to the [`safelist`](https://purgecss.com/safelisting.html). The safelist specifies the selectors which are safe to leave in the final CSS.
 
 ### Critical CSS
 
 * **`critical`**:
-  * `enable`: toggle Critical CSS
+  * `enable`: boolean, toggle to activate or deactivate Critical CSS.
 
 ### Images
 
-* **`imagemin`**: an object containing the whole images optimization configuration, for more details check [`vite-plugin-imagemin`](https://github.com/vbenjs/vite-plugin-imagemin)
+* **`imagemin`**: an object containing all image optimization configurations. For more information you can refer to [`vite-plugin-imagemin`](https://github.com/vbenjs/vite-plugin-imagemin)
 
 ### HTML Minify
 * **`htmlMinify`**:
-  * `enable`: toggle HTML minify with Terser.
-  * `options`: The options specified are handed over as is to [html-minifier-terser](https://github.com/terser/html-minifier-terser#options-quick-reference),
+  * `enable`: boolean, toggle to activate or deactivate HTML Minify (uses Terser).
+  * `options`: For a detailed look at the overall configuration options, please refer to [html-minifier-terser](https://github.com/terser/html-minifier-terser#options-quick-reference),
 
 ## Development
 
@@ -54,11 +54,11 @@ Edit the [`config.js`](config.js) according to your needs.
 
 * #### JavaScript
 
-**JavaScript** files, with support of latest ECMAScript, are located under `src/assets/js/`
-Scripts are working as modules with conditionnal import using `conditioner`, see the documentation [`here`](https://github.com/rikschennink/conditioner).
+**JavaScript** files, with support of the latest ECMAScript, are located under `src/assets/js/`
+Scripts are loaded as modules with conditionnal import using `conditioner`, feel free to consult the documentation of this dependency [`here`](https://github.com/rikschennink/conditioner).
 
-Use `data-module` attribute with your corresponding JS file. You can also add context, like breakpoint and visibility, see the example below.
-Hello module will be imported if the current viewport has atleast a width of 48rem (768px) and if the element is visible in the viewport.
+Use a `data-module` attribute with a value corresponding to the name of your JS file for it to be loaded in your HTML file. You can condition the loading of your module to a context, for instance a breakpoint, by specifying a `data-context` attribute. The context will detail the conditions required for the module to be loaded.
+For instance, in the following example, the Hello module will be imported if the current viewport has atleast a width of 48rem (768px) and if the element is visible in the viewport.
 
 ```twig
 <h1
@@ -90,7 +90,7 @@ You can convert all your `.png` and `.jpg` images to WebP format by using this c
 $ yarn webp
 ```
 
-There is a twig template located under `src/assets/templates/utils/_image.twig` which can help you.
+There is a twig template located under `src/assets/templates/utils/_image.twig` which you can use as a reference.
 
 Example with a simple image
 
@@ -149,7 +149,7 @@ Example with multiple breakpoints
 * #### Icons
 
 **Icons** files are located under `src/assets/icons`, they are used to create a svg sprite.
-Feel free to use the icon twig template to help you, it is located under : `src/assets/templates/utils/_icon.twig`
+Feel free to use the icon twig template as a reference, it is located under : `src/assets/templates/utils/_icon.twig`
 
 ```twig
 # iconID is the name of your svg file (required)
@@ -166,11 +166,12 @@ Simply add `lazyload` class on your image elements and `data-bg="path/to/your/ba
 
 * #### Twig
 
-**Twig** files are located under `src/assets/templates`. For twig modules or components, prefix file name with `_` to avoid html conversion.
+**Twig** files are located under `src/assets/templates`. For twig modules or components, prefix the file name with `_` to avoid html conversion.
 
-The html files located by default in the Vite project root are not intented to be replaced directly by the twig ones as the normal page files resolution/linking on the Vite's dev server is wanted to be preserved along with the build logic. However, those files are supposed to contain a json definition instead of the traditional markup, which should be moved on the twig side.
+???
+The html files located by default in the Vite project root are not intented to be replaced directly by the twig ones as the normal page files resolution/linking on the Vite's dev server is wanted to be preserved along with the build logic. However, those files are supposed to contain a json definition instead of the traditional markup, which should be moved on the twig side. ???
 
-More in details, a html file should look like this:
+An html file should look something like this:
 
 ```html
 <!-- index.html -->
@@ -184,13 +185,13 @@ More in details, a html file should look like this:
 </script>
 ```
 
-where template is the path of the twig template to be rendered (relative to the cwd), and data is the local context for that page (eventually merged with the globals provided via plugin options).
+Template is the path to the twig template to be rendered (relative to the cwd) and data is the local context for that page.
 
-If you want to go deeper with data, like for internationalization. You can create JSON files associated to the langugage you want to support. JSON files are located under `src/data/{lang}.json`.
+If you want to go deeper with data, like for internationalization. You can create a JSON files associated to the langugage you want to support. JSON files are located under `src/data/{lang}.json`.
 
 For example :
 
-Create a JSON file to support english language : `src/data/fr.json`
+Create a JSON file to support the french language : `src/data/fr.json`
 
 ```json
 {
@@ -221,7 +222,7 @@ export default defineConfig ({
 })
 ```
 
-In your html file, pass your langugage key as data
+In your html file, pass your language key as data
 
 ```html
 <script type="application/json">
@@ -234,7 +235,7 @@ In your html file, pass your langugage key as data
 </script>
 ```
 
-To finish, you can use your data according to your language
+you can now use your data according to the language you wish to use
 
 ```twig
 {{ data[lang].title }}
@@ -243,13 +244,14 @@ To finish, you can use your data according to your language
 * #### Theming
 
 All default theming configuration are located in `src/scss/vars/_default.scss`.
-A bunch a useful mixins ready to use located under `src/scss/base/_mixins.scss`.
+A bunch of useful mixins ready for use in the `src/scss/base/_mixins.scss` file.
 
 * ##### Fluid sizing
 
-A SASS mixin to linear interpolation size values using calc() across multiple breakpoints. It uses some basic math behind the scenes. You don't need to know the math or understand it to use this mixin. [`Source`](https://github.com/Jakobud/poly-fluid-sizing)
+A SASS mixin using linear interpolation to resize values with the help calc() across multiple breakpoints. It uses some basic math behind the scenes. You don't need to know the math or understand it to use this mixin. [`Source`](https://github.com/Jakobud/poly-fluid-sizing)
 
 Minimum and maximum size are set in `src/scss/vars/_default.scss`, they are related to the breakpoints map.
+
 ```scss
 $pfs-min: map.get($breakpoints, xs);
 $pfs-max: map.get($breakpoints, 2xl);
@@ -325,7 +327,7 @@ $colors: (
 
 * ##### Breakpoints
 
-There is more map, breakpoints time !
+Breakpoints are also referred to in a map
 
 ```scss
 $breakpoints: (
@@ -347,12 +349,12 @@ $breakpoints: (
 }
 ```
 
-You can set `$bp-helper` to `true` in order to enable a little UI helper displayed in the bottom right of your screen.
+You can set `$bp-helper` to `true` in order to enable a little UI helper displayed in the bottom right of your screen which will give you a real time visual update of your current breakpoint.
 
 * ##### Grid
 
 Grid settings are located under `src/scss/vars/_default.scss`
-Gutter sizes are related to breakpoints, It uses fluid sizing to calculate gutters sizing.
+Gutter sizes are related to breakpoints, fluid sizing is used to calculate them.
 
 ```scss
 // Define grid inner gutter sizes
@@ -373,7 +375,7 @@ $grid-columns: 12;
 $grid-container-width: 64rem;
 ```
 
-It generates many helper classes :
+helper classes are automatically generated, these include:
 
 * `wrapper`: Grid wrapper with `$grid-container-width` value as max-width
 * `container`: Handle grid outer gutters
@@ -415,8 +417,8 @@ Example :
 
 * #### SEO Friendly
 
-Use 2 data attributes to spread a link around an entire element. It uses `pseudo-classes` trick with absolute positioning. Be careful with relative position inside your element.
-Flag the element you want to spreak your link to with `data-seo-container` then add `data-seo-target` to your `<a>` element.
+Use 2 data attributes to spread a link around an entire element. It uses the `pseudo-classes` trick with absolute positioning. Be careful however with relative positions inside your element.
+Flag the element you want to spread your link to with `data-seo-container` then add `data-seo-target` to your `<a>` element.
 
 Demo : [`https://codepen.io/Nkzq/pen/RwgJwzd`](https://codepen.io/Nkzq/pen/RwgJwzd)
 
@@ -481,4 +483,5 @@ $ yarn lint:js
 - - -
 
 Hope you like it !
-Feel free to open issues for clarification/misunderstanding documentation.
+Feel free to open issues if you need any clarifications or misunderstand some points mde in this documentation.
+Cheers!
