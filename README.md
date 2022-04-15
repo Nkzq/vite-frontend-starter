@@ -54,11 +54,11 @@ Edit the [`config.js`](config.js) according to your needs.
 
 * #### JavaScript
 
-**JavaScript** files, with support of the latest ECMAScript, are located under `src/assets/js/`
+**JavaScript** files with support of the latest ECMAScript are located under `src/assets/js/`
 Scripts are loaded as modules with conditionnal import using `conditioner`, feel free to consult the documentation of this dependency [`here`](https://github.com/rikschennink/conditioner).
 
-Use a `data-module` attribute with a value corresponding to the name of your JS file for it to be loaded in your HTML file. You can condition the loading of your module to a context, for instance a breakpoint, by specifying a `data-context` attribute. The context will detail the conditions required for the module to be loaded.
-For instance, in the following example, the Hello module will be imported if the current viewport has atleast a width of 48rem (768px) and if the element is visible in the viewport.
+Use a `data-module` attribute with a value corresponding to the name of your JS file for it to be loaded in your HTML file. You can condition the loading of your module to a context, for instance a breakpoint, by specifying a `data-context` attribute.
+For instance, in the following example, the Hello module will be imported if the current viewport has a width of at least 48rem (768px) and if the element is visible in the viewport.
 
 ```twig
 <h1
