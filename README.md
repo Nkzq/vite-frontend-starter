@@ -168,7 +168,7 @@ Simply add `lazyload` class on your image elements and `data-bg="path/to/your/ba
 
 **Twig** files are located under `src/assets/templates`. For twig modules or components, prefix the file name with `_` to avoid html conversion.
 
-The html files located by default in the src file are not intented to be replaced directly by the twig ones as the normal page files resolution/linking on the Vite's dev server is wanted to be preserved along with the build logic. However, those files are supposed to contain a json definition instead of the traditional markup, which should be moved on the twig side. 
+The html files located by default in the src folder are not intented to be replaced directly by the twig ones as the normal page files resolution/linking on the Vite's dev server is wanted to be preserved along with the build logic. However, those files are supposed to contain a json definition instead of the traditional markup, which should be moved on the twig side. 
 
 An html file should look something like this:
 
