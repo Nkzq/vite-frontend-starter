@@ -16,7 +16,7 @@ import { createRequire } from 'module'
 const require = createRequire(import.meta.url)
 const file = fileURLToPath(import.meta.url)
 const dir = dirname(file)
-const { rootDir, buildDir, server, imagemin, favicons } = config
+const { rootDir, buildDir, server, imagemin } = config
 
 // JSON data
 const en = require(`./${rootDir}/data/en.json`)
