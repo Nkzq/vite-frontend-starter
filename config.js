@@ -1,5 +1,5 @@
 const config = {
-  baseURL: 'https://localhost:8000/',
+  baseURL: 'http://localhost:8000/',
   server: {
     host: 'localhost',
     port: 8000,

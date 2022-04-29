@@ -1,4 +1,4 @@
-export default element => {
+export default (element: HTMLElement): Function => {
   // Module mounted
   console.log('Hello', element)
 

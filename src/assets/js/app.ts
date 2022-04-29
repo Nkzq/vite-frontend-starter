@@ -1,4 +1,4 @@
-import lazySizes from 'lazysizes'
+import * as lazySizes from 'lazysizes'
 import 'lazysizes/plugins/native-loading/ls.native-loading'
 import 'lazysizes/plugins/object-fit/ls.object-fit'
 import 'lazysizes/plugins/unveilhooks/ls.unveilhooks'
@@ -17,10 +17,10 @@ document.documentElement.className = 'js'
 conditioner.addPlugin({
   monitor: {
     name: 'visible',
-    create: (context, element) => ({
+    create: (context: boolean, element: HTMLElement) => ({
       matches: false,
       addListener (change) {
-        new IntersectionObserver((entries) => {
+        new IntersectionObserver((entries: any[]) => {
           this.matches = entries.pop().isIntersecting === context
           change()
         }).observe(element)
@@ -28,9 +28,9 @@ conditioner.addPlugin({
     })
   },
 
-  moduleSetName: (name) => `./modules/${name}.js`,
-  moduleGetConstructor: (module) => module.default,
-  moduleImport: (name) => import(/* @vite-ignore */`${name}`)
+  moduleSetName: (name: string) => `./modules/${name}.js`,
+  moduleGetConstructor: (module: any) => module.default,
+  moduleImport: async (name: string) => await import(/* @vite-ignore */`${name}`)
 })
 
 conditioner.hydrate(document.documentElement)
