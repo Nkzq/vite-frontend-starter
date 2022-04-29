@@ -1,0 +1,61 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "lib": ["es2016"],
+    "outDir": "bin",
+    "module": "esnext",
+    "removeComments": true,
+    "moduleResolution": "node",
+    "strictNullChecks": true,
+    "typeRoots": [
+      "node_modules/@types/"
+    ],
+    "types": ["vite/client"]
+  },
+  "formatterOptions": {
+    "baseIndentSize": 0,
+    "indentSize": 2,
+    "indentStyle": "smart",
+    "tabSize": 2,
+    "newLineCharacter": "\n",
+    "convertTabsToSpaces": true,
+    "insertSpaceAfterCommaDelimiter": true,
+    "insertSpaceAfterSemicolonInForStatements": true,
+    "insertSpaceBeforeAndAfterBinaryOperators": true,
+    "insertSpaceAfterKeywordsInControlFlowStatements": true,
+    "insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+    "insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+    "insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": false,
+    "insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
+    "insertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+    "insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
+    "placeOpenBraceOnNewLineForFunctions": false,
+    "placeOpenBraceOnNewLineForControlBlocks": false,
+    "insertSpaceAfterTypeAssertion": true,
+    "IndentSize": 2,
+    "IndentStyle": "smart",
+    "TabSize": 2,
+    "NewLineCharacter": "\n",
+    "ConvertTabsToSpaces": true,
+    "InsertSpaceAfterCommaDelimiter": true,
+    "InsertSpaceAfterSemicolonInForStatements": true,
+    "InsertSpaceBeforeAndAfterBinaryOperators": true,
+    "InsertSpaceAfterKeywordsInControlFlowStatements": true,
+    "InsertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+    "InsertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+    "InsertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": false,
+    "InsertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets": false,
+    "InsertSpaceAfterOpeningAndBeforeClosingNonemptyParenthesis": false,
+    "InsertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
+    "PlaceOpenBraceOnNewLineForFunctions": false,
+    "PlaceOpenBraceOnNewLineForControlBlocks": false,
+    "InsertSpaceAfterTypeAssertion": true
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "name": "vite-frontend-starter",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,15 +10,24 @@
     "preview": "vite preview",
     "webp": "node scripts/webp.js",
     "lint:sass": "sass-lint -v -q",
-    "lint:js": "standard 'src/assets/js/**/*.js'",
-    "lint:js-fix": "standard --fix 'src/assets/js/**/*.js'"
+    "lint:js": "ts-standard 'src/assets/js/**/*.ts'",
+    "lint:js-fix": "ts-standard --fix 'src/assets/js/**/*.ts'",
+    "test": "playwright test"
   },
   "standard": {
     "globals": [
       "IntersectionObserver"
     ]
   },
+  "ts-standard": {
+    "project": "./tsconfig.json",
+    "ignore": [
+      "dist",
+      "src/assets/js/tests/**/*.ts"
+    ]
+  },
   "devDependencies": {
+    "@playwright/test": "^1.21.1",
     "autoprefixer": "^10.4.4",
     "chalk": "^5.0.1",
     "critical": "^4.0.1",
@@ -31,8 +40,9 @@
     "purgecss": "^4.1.3",
     "sass": "^1.49.9",
     "sass-lint": "^1.13.1",
-    "standard": "^16.0.4",
     "terser": "^5.12.1",
+    "ts-standard": "^11.0.0",
+    "typescript": "^4.6.4",
     "vite": "^2.8.0",
     "vite-plugin-imagemin": "^0.6.1",
     "vite-plugin-svg-icons": "^2.0.1",

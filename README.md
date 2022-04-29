@@ -52,9 +52,9 @@ Edit the [`config.js`](config.js) according to your needs.
 * #### Styles
 **SASS/PostCSS** files are located under `src/assets/scss/`
 
-* #### JavaScript
+* #### TypeScript
 
-**JavaScript** files with support of the latest ECMAScript are located under `src/assets/js/`
+**TypeScript** files with support of the latest ECMAScript are located under `src/assets/js/`
 Scripts are loaded as modules with conditionnal import using `conditioner`, feel free to consult the documentation of this dependency [`here`](https://github.com/rikschennink/conditioner).
 
 Use a `data-module` attribute with a value corresponding to the name of your JS file for it to be loaded in your HTML file. You can condition the loading of your module to a context, for instance a breakpoint, by specifying a `data-context` attribute.
@@ -70,15 +70,17 @@ For instance, in the following example, the Hello module will be imported if the
 ```
 
 ```js
-// src/assets/js/modules/Hello.js
-export default element => {
+// src/assets/js/modules/Hello.ts
+export default (element: HTMLElement): Function => {
   // Module mounted
   console.log('Hello', element)
+
   return () => {
     // Module unmounted
     console.log('Bye')
   }
 }
+
 ```
 
 * #### Images
@@ -466,6 +468,22 @@ Preview your production build :
 $ yarn preview
 ```
 
+## Run tests
+
+Requirements in order to have test browsers installed, run :
+
+```sh
+$ npx playwright install
+```
+
+All tests files are located under : `src/assets/js/tests/` and sould be named : `yourtest.spec.js`.
+
+Finally run :
+
+```sh
+$ yarn test
+```
+
 ## Run Code Style Linters
 
 ### SASS
@@ -473,7 +491,7 @@ $ yarn preview
 ```sh
 $ yarn lint:sass
 ```
-### JavaScript
+### TypeScript
 
 ```sh
 $ yarn lint:js
