@@ -476,7 +476,7 @@ Requirements in order to have test browsers installed, run :
 $ npx playwright install
 ```
 
-All tests files are located under : `src/assets/js/tests/` and they sould be named : `yourtest.spec.js`.
+All tests files are located under : `src/assets/js/tests/` and sould be named : `yourtest.spec.js`.
 
 Finally run :
 
