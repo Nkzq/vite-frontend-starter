@@ -7,8 +7,10 @@
 @function map-sort($map) {
   $keys: list-sort(map-keys($map));
   $sorted-map: ();
+
   @each $key in $keys {
     $sorted-map: map-merge($sorted-map, ($key: map-get($map, $key)));
   }
+
   @return $sorted-map;
 }

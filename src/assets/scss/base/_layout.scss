@@ -1,5 +1,5 @@
-@use 'sass:map';
-@use 'sass:math';
+@use "sass:map";
+@use "sass:math";
 
 // Calculate all grid fluid sizing
 $fluid-outer-gutters: ();
@@ -11,7 +11,6 @@ $fluid-inner-gutters-compensation: ();
   $map: ();
   $map: map.merge($map, (map.get($breakpoints, $bp): $size));
   $fluid-outer-gutters: map.merge($fluid-outer-gutters, $map);
-
   $map-compensation: ();
   $map-compensation: map.merge($map-compensation, (map.get($breakpoints, $bp): $size * 2));
   $fluid-outer-gutters-compensation: map.merge($fluid-outer-gutters-compensation, $map-compensation);
@@ -19,11 +18,10 @@ $fluid-inner-gutters-compensation: ();
 
 @each $bp, $size in $grid-inner-gutters {
   $map: ();
-  $map: map.merge($map, (map.get($breakpoints, $bp): $size * .5));
+  $map: map.merge($map, (map.get($breakpoints, $bp): $size * 0.5));
   $fluid-inner-gutters: map.merge($fluid-inner-gutters, $map);
-
   $map-compensation: ();
-  $map-compensation: map.merge($map-compensation, (map.get($breakpoints, $bp): $size * .5 * -1));
+  $map-compensation: map.merge($map-compensation, (map.get($breakpoints, $bp): $size * 0.5 * -1));
   $fluid-inner-gutters-compensation: map.merge($fluid-inner-gutters-compensation, $map-compensation);
 }
 
@@ -32,11 +30,32 @@ $fluid-inner-gutters-compensation: ();
   margin: 0 auto;
 }
 
+.row {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  @include poly-fluid-sizing("margin-right", $fluid-inner-gutters-compensation);
+  @include poly-fluid-sizing("margin-left", $fluid-inner-gutters-compensation);
+
+  &--reverse {
+    flex-direction: row-reverse;
+  }
+
+  &--full {
+    @include full-width;
+    @include poly-fluid-sizing("padding-right", $fluid-outer-gutters);
+    @include poly-fluid-sizing("padding-left", $fluid-outer-gutters);
+  }
+}
+
 .container {
   margin-right: auto;
   margin-left: auto;
-  @include poly-fluid-sizing('padding-right', $fluid-outer-gutters);
-  @include poly-fluid-sizing('padding-left', $fluid-outer-gutters);
+
+  @include poly-fluid-sizing("padding-right", $fluid-outer-gutters);
+  @include poly-fluid-sizing("padding-left", $fluid-outer-gutters);
 
   &--ng {
     padding-right: 0;
@@ -53,39 +72,22 @@ $fluid-inner-gutters-compensation: ();
   }
 }
 
-.row {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  @include poly-fluid-sizing('margin-right', $fluid-inner-gutters-compensation);
-  @include poly-fluid-sizing('margin-left', $fluid-inner-gutters-compensation);
-
-  &--reverse {
-    flex-direction: row-reverse;
-  }
-
-  &--full {
-    @include full-width;
-    @include poly-fluid-sizing('padding-right', $fluid-outer-gutters);
-    @include poly-fluid-sizing('padding-left', $fluid-outer-gutters);
-  }
-}
-
 %col {
-  @include poly-fluid-sizing('padding-right', $fluid-inner-gutters);
-  @include poly-fluid-sizing('padding-left', $fluid-inner-gutters);
+  @include poly-fluid-sizing("padding-right", $fluid-inner-gutters);
+  @include poly-fluid-sizing("padding-left", $fluid-inner-gutters);
 }
 
 @for $i from 1 through $grid-columns {
   .col-#{$i} {
     @extend %col;
+
     flex-basis: math.div(100%, $grid-columns) * $i;
     max-width: math.div(100%, $grid-columns) * $i;
   }
 
   .col-offset-#{$i} {
     @extend %col;
+
     margin-left: math.div(100%, $grid-columns) * $i;
   }
 }

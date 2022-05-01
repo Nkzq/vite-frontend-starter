@@ -1,12 +1,11 @@
-@use 'sass:map';
+@use "sass:map";
 
 /**
  * Variables
 */
 
 /* Breakpoints */
-$bp-helper: 'true';
-
+$bp-helper: "true";
 $breakpoints: (
   xs: 22.5rem, // 360px
   sm: 30rem, // 480px
@@ -18,27 +17,22 @@ $breakpoints: (
 
 /* Fluid grid setup */
 $grid-inner-gutters: (
-  xs: .5rem, // 8px
-  2xl: 1.25rem, // 20px
+  xs: 0.5rem,
+  2xl: 1.25rem,
 );
-
 $grid-outer-gutters: (
   xs: 1.25rem, // 20px
   2xl: 3.125rem, // 50px
 );
-
 $grid-columns: 12;
 $grid-container-width: 64rem;
 
 /* Typography */
-$font-base: Roboto, sans-serif;
-$font-heading: Roboto, sans-serif;
-
+$font-base: roboto, sans-serif;
+$font-heading: roboto, sans-serif;
 $base-font-size: 1rem;
-
 $base-line-height: 1.4;
 $heading-line-height: 1.2;
-
 $font-styles: (
   title: (
     size: (
@@ -66,15 +60,16 @@ $z-indexes: (
 );
 
 /* Colour palette */
+
 /* Use set-color function */
 $colors: (
-  'black': (
+  black: (
     base: #000
   ),
-  'white': (
+  white: (
     base: #fff
   ),
-  'main': (
+  main: (
     light: #63ccff,
     base: #039be5,
     dark: #006db3,

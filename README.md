@@ -318,11 +318,11 @@ $colors: (
 // Then use set-color function, default type is "base"
 
 .white {
-  color: set-color('white');
+  color: set-color(white);
 }
 
 .main--dark {
-  background-color: set-color('main', dark);
+  background-color: set-color(main, dark);
 }
 ```
 

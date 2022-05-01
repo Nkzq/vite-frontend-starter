@@ -1,29 +1,29 @@
-@import 'polyfluid/poly-fluid-sizing';
+@import "polyfluid/poly-fluid-sizing";
 
 /* Base */
-@import 'base/reset';
-@import 'base/print';
-@import 'base/mixins';
-@import 'base/functions';
-@import 'base/fonts';
-@import 'base/layout';
-@import 'base/typography';
+@import "base/reset";
+@import "base/print";
+@import "base/mixins";
+@import "base/functions";
+@import "base/fonts";
+@import "base/layout";
+@import "base/typography";
 
 /* Utils */
-@import 'utils/seo';
-@import 'utils/lazyloading';
-@import 'utils/sr-only';
-@import 'utils/keyframes';
-@import 'utils/helper';
+@import "utils/seo";
+@import "utils/lazyloading";
+@import "utils/sr-only";
+@import "utils/keyframes";
+@import "utils/helper";
 
 /* Vendor */
 
 /* Components */
-@import 'components/icons';
+@import "components/icons";
 
 /* Patterns */
-@import 'patterns/header';
-@import 'patterns/footer';
+@import "patterns/header";
+@import "patterns/footer";
 
 /* Dirty hacks and overrides */
-@import 'dirty/hacks';
+@import "dirty/hacks";
