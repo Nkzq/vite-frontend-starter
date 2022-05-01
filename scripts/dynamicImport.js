@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import chalk from 'chalk'
 import { minify } from 'terser'
+import ts from 'typescript'
 
 import config from '../config.js'
 
@@ -12,6 +13,7 @@ const { rootDir, buildDir } = config
  * @param {string} dest The path to the new copy.
  */
  const copyRecursiveSync = async (src, dest) => {
+  dest = dest.replace('.ts', '.js')
   const exists = fs.existsSync(src)
   const stats = exists && fs.statSync(src)
   const isDirectory = exists && stats.isDirectory()
@@ -24,9 +26,14 @@ const { rootDir, buildDir } = config
     try {
       fs.copyFileSync(src, dest)
       const file = fs.readFileSync(src, 'utf8')
-      const compiled = await minify(file)
+      const convert = await ts.transpileModule(file, {
+        compilerOptions: {
+          module: ts.ModuleKind.ESNext,
+        },
+      })
+      const compiled = await minify(convert.outputText)
       fs.writeFileSync(dest, compiled.code, 'utf8')
-      console.log(`📦 Module ${chalk.green(path.basename(src))} successfully copied to ${chalk.yellow(path.dirname(dest))}`)
+      console.log(`📦 Module ${chalk.green(path.basename(src))} successfully converted and copied to ${chalk.yellow(path.dirname(dest))}`)
     } catch (error) {
       console.error(error)
     }

@@ -14,6 +14,8 @@ import '../scss/app.scss'
 
 document.documentElement.className = 'js'
 
+const jsExt = import.meta.env.DEV ? 'ts' : 'js'
+
 conditioner.addPlugin({
   monitor: {
     name: 'visible',
@@ -28,7 +30,7 @@ conditioner.addPlugin({
     })
   },
 
-  moduleSetName: (name: string) => `./modules/${name}.js`,
+  moduleSetName: (name: string) => `./modules/${name}.${jsExt}`,
   moduleGetConstructor: (module: any) => module.default,
   moduleImport: async (name: string) => await import(/* @vite-ignore */`${name}`)
 })
