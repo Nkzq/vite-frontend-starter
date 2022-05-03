@@ -1,0 +1,12 @@
+{
+  "extends": "stylelint-config-standard-scss",
+  "rules": {
+    "selector-class-pattern": "^[a-z]([a-z0-9-]+)?(__([a-z0-9]+-?)+)?(--([a-z0-9]+-?)+){0,2}$",
+    "declaration-block-no-redundant-longhand-properties": null
+  },
+  "ignoreFiles": [
+    "src/assets/scss/base/*.scss",
+    "src/assets/scss/dirty/_hacks.scss",
+    "src/assets/scss/polyfluid/*.scss"
+  ]
+}
