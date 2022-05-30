@@ -13,7 +13,7 @@
     "lint:sass:fix": "stylelint '**/*.scss' --fix",
     "lint:js": "ts-standard 'src/assets/js/**/*.ts'",
     "lint:js:fix": "ts-standard --fix 'src/assets/js/**/*.ts'",
-    "lint:fix": "yarn lint:sass-fix && yarn lint:js-fix",
+    "lint:fix": "yarn lint:sass:fix && yarn lint:js:fix",
     "test": "playwright test"
   },
   "standard": {
