@@ -40,25 +40,6 @@
   }
 }
 
-// Font styles
-// Usage:
-// @include fs(title);
-@mixin fs($name) {
-  @if map.has-key($font-styles, $name) {
-    $name: map.get($font-styles, $name);
-  }
-
-  @if map.has-key($name, size, min) and map.has-key($name, size, max) {
-    @include poly-fluid-sizing("font-size", ($pfs-min: map.get($name, size, min), $pfs-max: map.get($name, size, max)));
-  } @else {
-    font-size: if(map.has-key($name, size), map.get($name, size), $base-font-size);
-  }
-
-  line-height: if(map.has-key($name, lh), map.get($name, lh), $base-line-height);
-  font-weight: if(map.has-key($name, weight), map.get($name, weight), 400);
-  color: if(map.has-key($name, color), map.get($name, color), inherit);
-}
-
 // Force element to have full viewport width
 // Usage:
 // @include full-width;

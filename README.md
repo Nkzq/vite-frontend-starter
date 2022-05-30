@@ -263,39 +263,6 @@ Usage :
 @include poly-fluid-sizing('font-size', ($pfs-min: rem(18px), $pfs-max: rem(24px)));
 ```
 
-* ##### Font styles
-
-You can declare your different font styles as a map
-  * `name` - name of your font style
-  * `size` - font-size with no fuild sizing
-    * `min` - minimum font-size with fluid sizing
-    * `max` - maximum font-size with fluid sizing
-  * `lh` - line-height
-  * `weight` - font weight
-  * `color` - color of the text
-
-```scss
-$font-styles: (
-  title: (
-    size: (
-      min: 2rem,
-      max: 4.375rem,
-    ),
-    lh: $heading-line-height,
-    weight: 700,
-  ),
-  button: (
-    size: 1.25rem,
-    weight: 700
-  )
-);
-
-// Then use fs mixin
-.title {
-  @include fs(title);
-}
-```
-
 * ##### Colors
 
 Like font styles, colors are also declared as a map
@@ -332,12 +299,12 @@ Breakpoints are also referred to in a map
 
 ```scss
 $breakpoints: (
-  xs: 22.5rem, // 360px
-  sm: 30rem, // 480px
-  md: 48rem, // 768px
-  lg: 64rem, // 1024px
-  xl: 80rem, // 1280px
-  2xl: 90rem, // 1440px
+  xs: rem(360px),
+  sm: rem(480px),
+  md: rem(768px),
+  lg: rem(1024px),
+  xl: rem(1280px),
+  2xl: rem(1440px),
 );
 
 // Then use mq mixin
@@ -360,20 +327,18 @@ Gutter sizes are related to breakpoints, fluid sizing is used to calculate them.
 ```scss
 // Define grid inner gutter sizes
 $grid-inner-gutters: (
-  xs: 0.5rem, // 8px
-  2xl: 1.25rem, // 20px
+  xs: rem(8px),
+  2xl: rem(20px),
 );
-
-// Define grid outer gutter sizes
 $grid-outer-gutters: (
-  xs: 1.25rem, // 20px
-  2xl: 3.125rem, // 50px
+  xs: rem(20px),
+  2xl: rem(50px),
 );
 
 // Define number of grid columns
 $grid-columns: 12;
 // Define grid container max-width
-$grid-container-width: 64rem;
+$grid-container-width: rem(1024px);
 ```
 
 helper classes are automatically generated, these include:

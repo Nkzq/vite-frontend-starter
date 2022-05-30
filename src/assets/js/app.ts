@@ -7,9 +7,9 @@ import 'regenerator-runtime/runtime'
 import '@babel/plugin-syntax-dynamic-import'
 import * as conditioner from 'conditioner-core/conditioner-core.min'
 
-import './polyfill/dataset'
-
 import 'virtual:svg-icons-register'
+
+import './polyfill/dataset'
 import '../scss/app.scss'
 
 document.documentElement.className = 'js'
