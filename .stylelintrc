@@ -5,7 +5,6 @@
     "declaration-block-no-redundant-longhand-properties": null
   },
   "ignoreFiles": [
-    "src/assets/scss/base/*.scss",
     "src/assets/scss/dirty/_hacks.scss",
     "src/assets/scss/polyfluid/*.scss"
   ]

@@ -1,5 +1,6 @@
 @use "sass:math";
 @use "sass:map";
+@use "sass:list";
 
 // Get color from $colors array
 // Usage:
@@ -26,7 +27,7 @@
     $list: $z-indexes;
   }
 
-  $z-index: index($list, $element);
+  $z-index: list.index($list, $element);
 
   @if $z-index {
     @return $z-index;

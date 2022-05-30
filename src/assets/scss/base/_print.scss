@@ -23,7 +23,9 @@
     page-break-inside: avoid;
   }
 
-  ul, ol, dl  {
+  ul,
+  ol,
+  dl {
     page-break-before: avoid;
   }
 }

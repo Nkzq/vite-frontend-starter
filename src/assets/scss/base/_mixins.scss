@@ -1,4 +1,8 @@
 @use "sass:map";
+@use "sass:math";
+
+$min-dpr: (-webkit-min-device-pixel-ratio: 2);
+$min-res: (min-resolution: 2dppx);
 
 /**
  * Helper mixins
@@ -8,11 +12,13 @@
 // Usage:
 // @include placeholder;
 @mixin placeholder {
-  // sass-lint:disable no-vendor-prefixes
-  ::input-placeholder { @content; }
-  :placeholder { @content; }
-  ::placeholder { @content; }
-  :input-placeholder { @content; }
+  $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input";
+
+  @each $placeholder in $placeholders {
+    &:#{"" + $placeholder}-placeholder {
+      @content;
+    }
+  }
 }
 
 // Mediaqueries
@@ -24,7 +30,7 @@
   @if $mq-breakpoint == landscape or $mq-breakpoint == portrait {
     $mq-media-query: "#{$mq-media-query} (orientation: #{$mq-breakpoint})";
   } @else if $mq-breakpoint == retina {
-    $mq-media-query: "#{$mq-media-query} (-webkit-min-device-pixel-ratio: 2)," + "#{$mq-media-query} (min-resolution: 2dppx)";
+    $mq-media-query: "#{$mq-media-query} #{$min-dpr}," + "#{$mq-media-query} #{$min-res}";
   } @else {
     // If $mq-breakpoint is a key that exists in
     // $mq-breakpoints, get and use the value
@@ -82,10 +88,8 @@
 // @include object-fit(cover, top);
 @mixin object-fit($fit: cover, $position: null) {
   object-fit: $fit;
-  object-fit: $fit;
 
   @if $position {
-    object-position: $position;
     object-position: $position;
     font-family: "object-fit: #{$fit}; object-position: #{$position}";
   } @else {
@@ -129,12 +133,12 @@
     border-left: $size solid transparent;
     border-right: $size solid transparent;
     border-top: $size solid $color;
-    margin-top: 0 - round($size / 2.5);
+    margin-top: 0 - math.round(math.div($size, 2.5));
   } @else if $direction == up {
     border-left: $size solid transparent;
     border-right: $size solid transparent;
     border-bottom: $size solid $color;
-    margin-bottom: 0 - round($size / 2.5);
+    margin-bottom: 0 - math.round(math.div($size, 2.5));
   } @else if $direction == right {
     border-top: $size solid transparent;
     border-bottom: $size solid transparent;
@@ -222,7 +226,7 @@
 //    background-image: url(....);
 // }
 @mixin retina-bg {
-  @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  @media #{$min-dpr}, #{$min-res} {
     @content;
   }
 }
