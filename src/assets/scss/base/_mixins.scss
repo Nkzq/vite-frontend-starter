@@ -101,16 +101,18 @@ $min-res: (min-resolution: 2dppx);
 // Usage:
 // @include aspect-ratio(16, 9);
 @mixin aspect-ratio($x, $y, $pseudo: false) {
-  $padding: ($y / $x) * 100 + "%";
+  $padding: #{($y / $x) * 100 + '%'};
 
   @if $pseudo {
     &::before {
-      @include pseudo($pos: relative);
-
+      content: "";
+      display: block;
+      position: relative;
       width: 100%;
       padding-top: $padding;
     }
   } @else {
+    position: relative;
     padding-top: $padding;
   }
 }
